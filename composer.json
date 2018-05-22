@@ -1,0 +1,27 @@
+{
+    "name": "inggo/psba-manila",
+    "authors": [
+        {
+            "name": "Inggo Espinosa",
+            "email": "inggo.espinosa@gmail.com"
+        }
+    ],
+    "keywords": [
+        "theme",
+        "psba-manila"
+    ],
+    "type": "wordpress-theme",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": "^5.4",
+        "wpupdatephp/wp-update-php": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Inggo\\WordPress\\PSBAManila\\": "src/php/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

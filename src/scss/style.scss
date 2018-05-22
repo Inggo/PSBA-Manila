@@ -1,0 +1,25 @@
+/*
+Theme Name: PSBA-Manila
+Theme URI: http://dev.nyo.me/wp/psba-manila/
+Author: Inggo Espinosa
+Author URI: http://inggo.xyz/
+Description: Custom WordPress Theme for PSBA-Manila.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: psba-manila
+*/
+
+@import "variables";
+
+// Required
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+// Optional
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/images";
+@import "node_modules/bootstrap/scss/code";
+@import "node_modules/bootstrap/scss/grid";
