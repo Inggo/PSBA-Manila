@@ -1,0 +1,37 @@
+.site-header {
+    background: $accent-bg;
+    color: $accent-color;
+}
+
+.site-header--top {
+    padding: 10px 0 0;
+    border-bottom: 1px solid $white;
+}
+
+.site-header--main {
+    padding: 10px 0;
+}
+
+.tagline {
+    font-family: $font-serif;
+    font-weight: bold;
+
+    &::before {
+        content: "“";
+    }
+
+    &::after {
+        content: "”";
+    }
+}
+
+.site-logo {
+    max-width: 140px;
+}
+
+.site-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@import "social";

@@ -6,3 +6,6 @@
     <?php wp_head(); ?>
 </head>
 <body <?=body_class($post->post_name);?>>
+<?php
+
+get_template_part('top');

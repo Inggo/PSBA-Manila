@@ -1,0 +1,40 @@
+$social-platforms: facebook google linkedin twitter;
+
+.social-media {
+    display: block;
+    margin: 0;
+    text-align: right;
+}
+
+.social-media--item {
+    transition: transform .3s;
+    list-style: none;
+    display: inline-block;
+    margin: 0 2px;
+
+    &:hover {
+        transform: rotate(17deg);
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    a {
+        display: block;
+    }
+}
+
+.social-media--icon {
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+@each $medium in $social-platforms {
+    .icon-social_#{$medium} {
+        background-image: url('images/social-#{$medium}.png');
+    }
+}
