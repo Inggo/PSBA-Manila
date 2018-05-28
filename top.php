@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="tagline">
+          <div class="tagline text-center">
             <?php bloginfo('description'); ?>
           </div>
         </div>
@@ -23,7 +23,7 @@
   <section class="site-header--main">
     <div class="container">
       <div class="row no-gutters">
-        <div class="col-6 col-md-2 offset-md-1">
+        <div class="col-6 col-md-2">
           <?php if (get_option('header_logo')): ?>
           <div class="site-logo">
             <a href="/">
@@ -32,7 +32,7 @@
           </div>
           <?php endif; ?>
         </div>
-        <div class="col-6 col-md-9">
+        <div class="col-6 col-md-10">
           <h1 class="site-title"><?php if (get_option('header_title')): ?>
           <?=(get_option('header_title'))?>
           <?php else: ?>

@@ -1,0 +1,36 @@
+.front-page-banners {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.banner-caption,
+.banner-cta {
+    position: absolute;
+    left: 10%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .4s;
+}
+
+.banner-caption {
+    top: 30px;
+    background: transparentize($accent-bg, .1);
+    color: $accent-color;
+    font-size: 2.75rem;
+    padding: 20px;
+}
+
+.banner-cta {
+    bottom: 30px;
+    font-size: 2rem;
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    transition-delay: .2s;
+}
+
+.active .banner-cta,
+.active .banner-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+

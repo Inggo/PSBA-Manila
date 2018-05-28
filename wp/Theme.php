@@ -11,6 +11,8 @@ class Theme
 
     public $customizer;
 
+    public $admin;
+
     public $theme_data;
     public $version;
     public $slug = '';

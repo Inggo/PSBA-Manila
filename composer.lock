@@ -1,0 +1,107 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "69670e9277c179ea70c30f8459693fa3",
+    "packages": [
+        {
+            "name": "webdevstudios/cmb2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CMB2/CMB2.git",
+                "reference": "77f588dda38afd91e660be1f80fcf061a06a3b3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/77f588dda38afd91e660be1f80fcf061a06a3b3b",
+                "reference": "77f588dda38afd91e660be1f80fcf061a06a3b3b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.2.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "WebDevStudios",
+                    "email": "contact@webdevstudios.com",
+                    "homepage": "https://github.com/WebDevStudios",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Justin Sternberg",
+                    "email": "justin@dsgnwrks.pro",
+                    "homepage": "https://dsgnwrks.pro",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Zao",
+                    "email": "office@zao.com",
+                    "homepage": "http://zao.is",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CMB2 is a metabox, custom fields, and forms library for WordPress that will blow your mind.",
+            "homepage": "https://github.com/CMB2/CMB2",
+            "keywords": [
+                "metabox",
+                "plugin",
+                "wordpress"
+            ],
+            "time": "2018-05-25T14:06:03+00:00"
+        },
+        {
+            "name": "wpupdatephp/wp-update-php",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WPupdatePHP/wp-update-php.git",
+                "reference": "6c80444de04d8c688e3b42e164e40527b487a357"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WPupdatePHP/wp-update-php/zipball/6c80444de04d8c688e3b42e164e40527b487a357",
+                "reference": "6c80444de04d8c688e3b42e164e40527b487a357",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Library to be bundled with WordPress plugins to enforce users to upgrade to PHP 5.4 hosting",
+            "time": "2017-03-08T09:50:34+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "webdevstudios/cmb2": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -6,10 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Inggo\\WordPress\\Admin' => $baseDir . '/wp/Admin.php',
     'Inggo\\WordPress\\Contracts\\Customizer' => $baseDir . '/wp/Contracts/Customizer.php',
+    'Inggo\\WordPress\\PSBAManila\\Admin' => $baseDir . '/wp/PSBAManila/Admin.php',
     'Inggo\\WordPress\\PSBAManila\\Theme' => $baseDir . '/wp/PSBAManila/Theme.php',
+    'Inggo\\WordPress\\PSBAManila\\ThemeCustomizer' => $baseDir . '/wp/PSBAManila/ThemeCustomizer.php',
     'Inggo\\WordPress\\Theme' => $baseDir . '/wp/Theme.php',
     'Inggo\\WordPress\\ThemeCustomizer' => $baseDir . '/wp/ThemeCustomizer.php',
     'Inggo\\WordPress\\ThemeCustomizerHelper' => $baseDir . '/wp/Helpers/ThemeCustomizerHelper.php',
     'Inggo\\WordPress\\Traits\\DisplaysMessages' => $baseDir . '/wp/Traits/DisplaysMessages.php',
+    'WPUpdatePhp' => $vendorDir . '/wpupdatephp/wp-update-php/src/WPUpdatePhp.php',
 );

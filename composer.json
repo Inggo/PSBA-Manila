@@ -13,15 +13,21 @@
     "type": "wordpress-theme",
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": "^5.4",
-        "wpupdatephp/wp-update-php": "^1.1"
+        "wpupdatephp/wp-update-php": "^1.1",
+        "webdevstudios/cmb2": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "Inggo\\WordPress\\": "wp/"
-        }
+        },
+        "files": ["vendor/webdevstudios/cmb2/init.php"]
     },
     "config": {
         "optimize-autoloader": true
-    }
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/{$name}/": ["webdevstudios/cmb2"]
+        }
+    }        
 }

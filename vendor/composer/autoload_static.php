@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit446f722c76fec37a7f813610554b6034
 {
+    public static $files = array (
+        'ce0c66ef81d1dd312a50170e5f0205b7' => __DIR__ . '/..' . '/webdevstudios/cmb2/init.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'I' => 
         array (
@@ -21,12 +25,16 @@ class ComposerStaticInit446f722c76fec37a7f813610554b6034
     );
 
     public static $classMap = array (
+        'Inggo\\WordPress\\Admin' => __DIR__ . '/../..' . '/wp/Admin.php',
         'Inggo\\WordPress\\Contracts\\Customizer' => __DIR__ . '/../..' . '/wp/Contracts/Customizer.php',
+        'Inggo\\WordPress\\PSBAManila\\Admin' => __DIR__ . '/../..' . '/wp/PSBAManila/Admin.php',
         'Inggo\\WordPress\\PSBAManila\\Theme' => __DIR__ . '/../..' . '/wp/PSBAManila/Theme.php',
+        'Inggo\\WordPress\\PSBAManila\\ThemeCustomizer' => __DIR__ . '/../..' . '/wp/PSBAManila/ThemeCustomizer.php',
         'Inggo\\WordPress\\Theme' => __DIR__ . '/../..' . '/wp/Theme.php',
         'Inggo\\WordPress\\ThemeCustomizer' => __DIR__ . '/../..' . '/wp/ThemeCustomizer.php',
         'Inggo\\WordPress\\ThemeCustomizerHelper' => __DIR__ . '/../..' . '/wp/Helpers/ThemeCustomizerHelper.php',
         'Inggo\\WordPress\\Traits\\DisplaysMessages' => __DIR__ . '/../..' . '/wp/Traits/DisplaysMessages.php',
+        'WPUpdatePhp' => __DIR__ . '/..' . '/wpupdatephp/wp-update-php/src/WPUpdatePhp.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
