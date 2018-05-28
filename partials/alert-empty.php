@@ -1,0 +1,1 @@
+<p class="alert alert-warning">Sorry, no posts match your criteria.</p>

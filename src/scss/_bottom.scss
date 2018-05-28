@@ -1,0 +1,19 @@
+.site-footer {
+    background: $gray-800;
+}
+
+.footer-nav {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    li, a {
+        color: $white;
+    }
+}
+
+.site-copyright {
+    background: $gray-900;
+    padding: 1rem;
+    color: $white;
+    font-size: 0.8rem;
+}

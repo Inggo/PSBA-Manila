@@ -2,6 +2,19 @@ html {
     font-size: 14px;
 }
 
+main {
+    > section {
+        margin-top: 20px;
+    }
+}
+
+article {
+    figure {
+        float: left;
+        margin-right: 15px;
+    }    
+}
+
 img {
     max-width: 100%;
     height: auto;

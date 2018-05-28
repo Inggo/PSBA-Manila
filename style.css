@@ -9452,6 +9452,15 @@ html {
   font-size: 14px;
 }
 
+main > section {
+  margin-top: 20px;
+}
+
+article figure {
+  float: left;
+  margin-right: 15px;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -9464,6 +9473,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Merriweather", serif;
   font-weight: bold;
+}
+
+main h2 {
+  border-bottom: 1px solid #ced4da;
+  margin-bottom: 20px;
 }
 
 .site-header {
@@ -9555,14 +9569,39 @@ h1, h2, h3, h4, h5, h6 {
   background-image: url("images/social-twitter.png");
 }
 
+.navbar .nav-item {
+  text-transform: uppercase;
+}
+
 .nav-item {
+  padding-left: 6px;
+  padding-right: 6px;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  text-transform: uppercase;
 }
 
 .nav-item.active {
   background: #024182;
+}
+
+.site-footer {
+  background: #343a40;
+}
+
+.footer-nav {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.footer-nav li, .footer-nav a {
+  color: #fff;
+}
+
+.site-copyright {
+  background: #212529;
+  padding: 1rem;
+  color: #fff;
+  font-size: 0.8rem;
 }
 
 .front-page-banners {
@@ -9585,17 +9624,65 @@ h1, h2, h3, h4, h5, h6 {
   top: 30px;
   background: rgba(2, 65, 130, 0.9);
   color: #fff;
-  font-size: 2.75rem;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
   padding: 20px;
 }
 
 .banner-cta {
   bottom: 30px;
-  font-size: 2rem;
+  font-size: 1.25rem;
   padding-left: 2.75rem;
   padding-right: 2.75rem;
   -webkit-transition-delay: .2s;
           transition-delay: .2s;
+}
+
+.front-page-tabs .nav-item {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.front-page-tabs .nav-tabs {
+  border-bottom: 4px solid #024182;
+  margin-bottom: 19px;
+}
+
+.front-page-tabs .nav-tabs .nav-item {
+  margin-bottom: -4px;
+}
+
+.front-page-tabs .nav-tabs .nav-link,
+.front-page-tabs .nav-tabs .nav-item.show .nav-link {
+  border: none;
+}
+
+.front-page-tabs .nav-tabs .nav-link:hover,
+.front-page-tabs .nav-tabs .nav-item.show .nav-link:hover {
+  border: none;
+}
+
+.front-page-tabs .nav-tabs .nav-link.active,
+.front-page-tabs .nav-tabs .nav-item.show .nav-link {
+  border: none;
+  background: #024182;
+  color: #fff;
+}
+
+.front-page-tabs .tab-content {
+  padding-bottom: 40px;
+}
+
+@media (min-width: 576px) {
+  .banner-caption {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    left: 10%;
+  }
+  .banner-cta {
+    font-size: 2rem;
+    left: 10%;
+  }
 }
 
 .active .banner-cta,

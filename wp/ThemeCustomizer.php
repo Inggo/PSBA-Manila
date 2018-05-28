@@ -34,20 +34,9 @@ class ThemeCustomizer implements Customizer
     public function register(WP_Customize_Manager $manager)
     {
         $this->ch->setManager($manager);
-        $this->initializeContactDetails();
         $this->initializeSocialMedia();
         $this->initializeFooterPages();
-    }
-
-    /**
-     * Initialize Contact Details section and fields
-     */
-    private function initializeContactDetails()
-    {
-        $this->ch->addSection($this->slug . '_contact_details', 'Contact Details');
-        $this->ch->addControl('contact_address', $this->slug . '_contact_details', 'Address', '', 'textarea');
-        $this->ch->addControl('contact_number', $this->slug . '_contact_details', 'Contact Number');
-        $this->ch->addControl('contact_email', $this->slug . '_contact_details', 'Email Address');
+        $this->initializeCopyrightInfo();
     }
 
     /**
@@ -69,6 +58,12 @@ class ThemeCustomizer implements Customizer
         $this->ch->addSection($this->slug . '_footer_pages', 'Footer Pages', 140);
         $this->ch->addPagesControl('footer_privacy_policy', $this->slug . '_footer_pages', 'Privacy Policy Page');
         $this->ch->addPagesControl('footer_cookie_policy', $this->slug . '_footer_pages', 'Cookie Policy Page');
+    }
+
+    private function initializeCopyrightInfo()
+    {
+        $this->ch->addSection($this->slug . '_copyright_info', 'Copyright Info', 150);
+        $this->ch->addControl('copyright', $this->slug . '_copyright_info', 'Copyright Text', '', 'textarea');
     }
 
     /**

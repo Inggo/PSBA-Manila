@@ -1,11 +1,14 @@
+.navbar .nav-item {
+    text-transform: uppercase;
+}
+
 .nav-item {
+    padding-left: 6px;
+    padding-right: 6px;
     padding-top: $navitem-padding-y;
     padding-bottom: $navitem-padding-y;
-
-    text-transform: uppercase;
 
     &.active {
         background: $accent-bg;
     }
 }
-

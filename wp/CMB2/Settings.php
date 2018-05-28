@@ -11,10 +11,10 @@ class Settings
 
     public static function initShowOn()
     {
-        add_action('cmb2_show_on', [static::class, 'showOnFrontPage']);
+        add_action('cmb2_show_on', [static::class, 'showOnFrontPage'], 10, 2);
     }
 
-    public static function showOnFrontPage($display, $meta_box = null)
+    public static function showOnFrontPage($display, $meta_box)
     {
         if (!isset($meta_box['show_on']['key'])) {
             return $display;

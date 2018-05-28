@@ -38,6 +38,14 @@ class Theme
         add_action('customize_register', [$this->customizer, 'register']);
 
         add_filter('pre_get_posts', [$this, 'searchFilter']);
+
+        add_filter('next_posts_link_attributes', [$this, 'postLinkAttributes']);
+        add_filter('previous_posts_link_attributes', [$this, 'postLinkAttributes']);
+    }
+
+    public function postLinkAttributes()
+    {
+        return 'class="page-link"';
     }
 
     public function disableAdminBar()
@@ -92,6 +100,7 @@ class Theme
         // Register the nav menus
         register_nav_menus(array(
             'main_menu' => 'Main Menu',
+            'footer_menu' => 'Footer Menu',
         ));
 
         // Add widgets support
