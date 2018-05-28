@@ -1,3 +1,4 @@
 /node_modules/
 /vendor/**/.git
+/vendor/**/.gitignore
 /.vscode

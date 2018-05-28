@@ -4187,7 +4187,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
 }
 
 .navbar > .container,
@@ -9553,6 +9553,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .icon-social_twitter {
   background-image: url("images/social-twitter.png");
+}
+
+.nav-item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.nav-item.active {
+  background: #024182;
 }
 
 .front-page-banners {

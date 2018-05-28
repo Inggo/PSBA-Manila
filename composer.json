@@ -14,13 +14,17 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "wpupdatephp/wp-update-php": "^1.1",
-        "webdevstudios/cmb2": "dev-master"
+        "webdevstudios/cmb2": "dev-master",
+        "wp-bootstrap/wp-bootstrap-navwalker": "^4.1"
     },
     "autoload": {
         "psr-4": {
             "Inggo\\WordPress\\": "wp/"
         },
-        "files": ["vendor/webdevstudios/cmb2/init.php"]
+        "files": [
+            "vendor/webdevstudios/cmb2/init.php",
+            "vendor/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php"
+        ]
     },
     "config": {
         "optimize-autoloader": true

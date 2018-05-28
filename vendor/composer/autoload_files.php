@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ce0c66ef81d1dd312a50170e5f0205b7' => $vendorDir . '/webdevstudios/cmb2/init.php',
+    'ac39fadcc34436864a0c94385d084113' => $vendorDir . '/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php',
 );

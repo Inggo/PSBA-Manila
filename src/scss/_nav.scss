@@ -1,0 +1,11 @@
+.nav-item {
+    padding-top: $navitem-padding-y;
+    padding-bottom: $navitem-padding-y;
+
+    text-transform: uppercase;
+
+    &.active {
+        background: $accent-bg;
+    }
+}
+

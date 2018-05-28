@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Inggo\\WordPress\\' => array($baseDir . '/wp'),
+    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );
