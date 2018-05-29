@@ -14,7 +14,9 @@
         'depth'           => 1
     ));
     ?>
-    <form class="form-inline my-2 my-lg-0" method="get" action="<?= home_url( '/' ); ?>">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="s" id="s">
-    </form>
+    <div class="search-form">
+        <form class="form-inline my-2 my-lg-0" method="get" action="<?= home_url( '/' ); ?>">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="s" id="s">
+        </form>
+    </div>
 </nav>

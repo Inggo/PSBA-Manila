@@ -1,6 +1,6 @@
 <?php
 
-$banners  = get_post_meta( get_the_ID(), 'front_page_banners', true);
+$banners  = get_post_meta(get_the_ID(), 'front_page_banners', true);
 
 if (!$banners || count($banners) === 0) {
     return;

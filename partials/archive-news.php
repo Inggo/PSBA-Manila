@@ -1,4 +1,6 @@
 <?php
+global $theme;
+
 $subquery = new WP_Query([
     'category_name' => 'news',
     'posts_per_page' => 5,

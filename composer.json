@@ -31,7 +31,7 @@
     },
     "extra": {
         "installer-paths": {
-            "vendor/{$name}/": ["webdevstudios/cmb2"]
+            "vendor/{$vendor}/{$name}/": ["webdevstudios/cmb2"]
         }
     }        
 }

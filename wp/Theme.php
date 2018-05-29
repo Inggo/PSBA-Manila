@@ -17,6 +17,10 @@ class Theme
     public $version;
     public $slug = '';
 
+    protected $alertMessage = '';
+
+    private $current_post = null;
+    
     public function __construct($slug = 'theme', Customizer $customizer)
     {
         $this->slug = $slug;
@@ -41,6 +45,8 @@ class Theme
 
         add_filter('next_posts_link_attributes', [$this, 'postLinkAttributes']);
         add_filter('previous_posts_link_attributes', [$this, 'postLinkAttributes']);
+
+        add_filter('page_link', [$this, 'editPermalink'], 1110, 2);
     }
 
     public function postLinkAttributes()
@@ -68,11 +74,13 @@ class Theme
         wp_register_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', [], '1.12.9');
         wp_register_script('bootstrap_js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', ['jquery', 'popper'], '4.0.0');
         wp_register_script('main_js', get_template_directory_uri() . '/script.js', ['bootstrap_js'], $this->version);
+
+        wp_register_style('bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', [], '4.0.0');
     }
 
     public function enqueueStyles()
     {
-        wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', [], $this->version);
+        wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', ['bootstrap_css'], $this->version);
     }
 
     public function enqueueScripts()
@@ -110,5 +118,67 @@ class Theme
     protected function addImageSizes()
     {
         return;
+    }
+
+    public function alert($message, $type = 'error')
+    {
+        $this->setAlertMessage($message);
+        $this->showAlertMessage($type);
+    }
+
+    public function setAlertMessage($message)
+    {
+        $this->alertMessage = $message;
+    }
+
+    public function getAlertMessage()
+    {
+        return $this->alertMessage;
+    }
+
+    public function showAlertMessage($type = 'error')
+    {
+        get_template_part('partials/alert', $type);
+    }
+
+    public function setCurrentPost($post)
+    {
+        $this->current_post = $post;
+    }
+
+    public function getCurrentPost($post)
+    {
+        return $this->current_post;
+    }
+
+    public function hasCurrentPost()
+    {
+        return !is_null($this->current_post);
+    }
+
+    public function isCurrentPost($post)
+    {
+        return $this->hasCurrentPost() && $this->current_post->ID == $post->ID;
+    }
+
+    public function editPermalink($url, $post_id)
+    {
+        $post = get_post($post_id);
+
+        if ($post->post_type != 'page') {
+            return $url;
+        }
+
+        $parent_id = wp_get_post_parent_id($post_id);
+
+        if (!$parent_id) {
+            return $url;
+        }
+
+        if (get_post_meta($parent_id, '_wp_page_template', true) !== 'templates/parent-page.php') {
+            return $url;
+        }
+
+        return str_replace('/' . $post->post_name . '/', '/#page-' . $post->post_name, $url);
     }
 }

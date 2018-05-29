@@ -1,4 +1,6 @@
 <?php
+global $theme;
+
 $subquery = new WP_Query([
     'category_name' => 'announcement',
     'posts_per_page' => 5,
@@ -11,7 +13,7 @@ if ($subquery->have_posts()) {
         get_template_part('partials/single/excerpt', 'announcements');
     }
 } else {
-    get_template_part('partials/alert', 'empty');
+    $theme->alert('Sorry, no posts matched your criteria.');
 }
 
 wp_reset_postdata();

@@ -20,7 +20,9 @@ class Admin
     public function init()
     {
         $this->initCmb2();
+        add_action('admin_init', [$this, 'hideEditor']);
         add_action('cmb2_admin_init', [$this, 'addMetaBoxes']);
+        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
     public function initCMB2()
@@ -29,6 +31,11 @@ class Admin
     }
 
     public function addMetaBoxes()
+    {
+        $this->addFrontPageBannersMetaBoxes();
+    }
+
+    private function addFrontPageBannersMetaBoxes()
     {
         $cmb = new_cmb2_box([
             'id'            => 'front_page_metabox',
@@ -84,6 +91,42 @@ class Admin
         ]);
     }
 
+    public function overridePageContents($post_id, $post, $update)
+    {
+        $post_type = get_post_type($post_id);
+
+        if ($post_type != "page") {
+            return;
+        }
+
+        $front_page = get_option('page_on_front');
+
+        if ($post_id == $front_page) {
+            return $this->overrideFrontPageContents($post);
+        }
+    }
+
+    private function overrideFrontPageContents($post)
+    {
+        $banners = get_post_meta($post->ID, 'front_page_banners', true);
+
+        // Clear post content
+        $post->post_content = "";
+
+        // Append caption and CTA to post content
+        foreach ($banners as $index => $banner) {
+            $post->post_content .= $banner['caption'] . "\n\n";
+            $post->post_content .= $banner['cta_button'] . "\n\n";
+            $post->post_content .= "\n";
+        }
+
+        remove_action('save_post', [$this, 'overridePageContents']);
+
+        wp_update_post($post);
+
+        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+    }
+
     private function colorChoices($pre = 'is')
     {
         return [
@@ -97,5 +140,33 @@ class Admin
             $pre . '-dark' => 'Dark',
             $pre . '-link' => 'Link',
         ];
+    }
+
+    public function hideEditor()
+    {
+        $post_id = 0;
+    
+        if (isset($_GET['post'])) {
+            $post_id = $_GET['post'];
+        } elseif (isset($_POST['post_ID'])) {
+            $post_id = $_POST['post_ID'];
+        }
+    
+        if (!$post_id) {
+            return false;
+        }
+    
+        $front_page = get_option('page_on_front');
+
+        if ($post_id != $front_page) {
+            return false;
+        }
+
+        return $this->removeEditor();
+    }
+
+    protected function removeEditor()
+    {
+        return remove_post_type_support('page', 'editor');
     }
 }

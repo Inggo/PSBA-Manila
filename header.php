@@ -6,7 +6,7 @@
     <title><?php bloginfo('name') . (!is_front_page() ? ' | ' . wp_title('') : ''); ?></title>
     <?php wp_head(); ?>
 </head>
-<body <?=body_class($post->post_name);?>>
+<body <?=body_class();?>>
 <?php
 
 get_template_part('top');

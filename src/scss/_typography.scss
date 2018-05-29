@@ -8,8 +8,49 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 main {
+    > h2 {
+        background: $accent-bg;
+        color: $accent-color;
+
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        font-size: 1.75rem;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        letter-spacing: 1px;
+    }
+
     h2 {
         border-bottom: 1px solid $gray-400;
         margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+
+        th {
+            font-weight: bold;
+            border: 1px solid $gray-300;
+            padding: 4px;
+        }
+
+        td {
+            border: 1px solid $gray-300;
+            padding: 4px;
+        }
+    }
+}
+
+img {
+    &.alignleft {
+        float: left;
+        margin-right: 10px;
+    }
+
+    &.alignright {
+        float: right;
+        margin-left: 10px;
     }
 }

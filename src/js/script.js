@@ -6,3 +6,11 @@ function $buo_f(){
 };
 try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
 catch(e){window.attachEvent("onload", $buo_f)};
+
+(function($){
+    $(window).on('load', function () {
+        if (window.location.hash) {
+            $('a[href="' + window.location.hash +'"]').tab('show'); 
+        }
+    });
+})(jQuery);
