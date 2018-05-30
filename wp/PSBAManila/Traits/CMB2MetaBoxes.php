@@ -129,4 +129,56 @@ trait CMB2MetaBoxes
             'type' => 'text',
         ]);
     }
+
+    private function addPortalPageMetaBoxes()
+    {
+        $cmb = new_cmb2_box([
+            'id'            => 'portal_page_metabox',
+            'title'         => __('Links', $this->slug),
+            'object_types'  => ['page'],
+            'show_on'       => ['key' => 'page-template', 'value' => 'templates/portal-page.php'],
+            'context'       => 'normal',
+            'priority'      => 'high',
+            'show_names'    => true
+        ]);
+
+        $group_field_id = $cmb->add_field([
+            'id'          => 'portal_page_contents',
+            'type'        => 'group',
+            'options'     => array(
+                'group_title'   => __('Page {#}', $this->slug),
+                'add_button'    => __('Add Page', $this->slug),
+                'remove_button' => __('Remove Page', $this->slug),
+                'sortable'      => true,
+            ),
+        ]);
+
+        $cmb->add_group_field($group_field_id, [
+            'name' => 'Image',
+            'id'   => 'image',
+            'type' => 'file',
+        ]);
+
+        $cmb->add_group_field($group_field_id, [
+            'name' => 'Text',
+            'id'   => 'text',
+            'type' => 'textarea_small',
+        ]);
+
+        $pages = get_pages([
+            'post_type' => 'page',
+        ]);
+
+        foreach ($pages as $page) {
+            $page_select[$page->ID] = $page->post_title;
+        }
+
+        $cmb->add_group_field($group_field_id, [
+            'name' => 'Page',
+            'id'   => 'page',
+            'type' => 'select',
+            'show_option_none' => true,
+            'options' => $page_select,
+        ]);
+    }
 }

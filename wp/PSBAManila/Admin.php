@@ -39,6 +39,7 @@ class Admin extends BaseAdmin
         $this->addParentPageMetaBoxes();
         $this->addMultiContentPageMetaBoxes();
         $this->addContactPageMetaBoxes();
+        $this->addPortalPageMetaBoxes();
     }
 
     public function createDefaultCategories()
@@ -46,6 +47,13 @@ class Admin extends BaseAdmin
         wp_insert_term('News', 'category');
         wp_insert_term('Announcement', 'category');
         wp_insert_term('Event', 'category');
+
+        wp_insert_term('Board Member', 'post_tag');
+        wp_insert_term('Officer', 'post_tag');
+        wp_insert_term('Faculty', 'post_tag');
+        wp_insert_term('Graduate', 'post_tag');
+        wp_insert_term('Undergraduate', 'post_tag');
+        wp_insert_term('Senior High', 'post_tag');
     }
 
     public function hideEditor()
@@ -68,7 +76,8 @@ class Admin extends BaseAdmin
 
         if ($page_template === 'templates/parent-page.php' ||
             $page_template === 'templates/multi-content.php' ||
-            $page_template === 'templates/contact-page.php') {
+            $page_template === 'templates/contact-page.php' ||
+            $page_template === 'templates/portal-page.php') {
             // return $this->removeEditor();
         }
     }

@@ -9484,7 +9484,7 @@ main > h2 {
   color: #fff;
   text-align: center;
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 2px;
   margin-bottom: 4px;
   font-size: 1.75rem;
   padding-top: 4px;
@@ -9497,7 +9497,7 @@ main h2 {
   margin-bottom: 20px;
 }
 
-main h2, main h3, main h4, main h5, main h6 {
+main h3, main h4, main h5, main h6 {
   color: #024182;
 }
 
@@ -9773,4 +9773,16 @@ img.alignright {
 
 .contact-details h5 {
   color: #024182;
+}
+
+.portal-page .card img {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  opacity: .8;
+}
+
+.portal-page .card a:hover img {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  opacity: 1;
 }

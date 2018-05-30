@@ -33,7 +33,7 @@
           <?php endif; ?>
         </div>
         <div class="col-md-10">
-          <h1 class="site-title text-xs-center">
+          <h1 class="site-title text-center">
             <?php if (get_option('header_title')) : ?>
               <?= (get_option('header_title')) ?>
             <?php else : ?>

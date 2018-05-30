@@ -3,12 +3,14 @@
 namespace Inggo\WordPress\PSBAManila;
 
 use Inggo\WordPress\Theme as BaseTheme;
+use Inggo\WordPress\PSBAManila\CPTRegistrar;
 
 class Theme extends BaseTheme
 {
     public function __construct()
     {
         parent::__construct('psba-manila', new ThemeCustomizer);
+        $this->cpt_registrar[] = new CPTRegistrar;
     }
 
     public function registerScriptStyles()

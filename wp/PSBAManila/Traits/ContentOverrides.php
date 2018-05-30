@@ -17,6 +17,10 @@ trait ContentOverrides
         if ($page_template === 'templates/contact-page.php') {
             return $this->overrideContactPageContents($post);
         }
+
+        if ($page_template === 'templates/portal-page.php') {
+            return $this->overridePortalPageContents($post);
+        }
     }
 
     private function overrideMultiPageContents($post)
@@ -89,4 +93,29 @@ trait ContentOverrides
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
+    private function overridePortalPageContents($post)
+    {
+        $contents = get_post_meta($post->ID, 'portal_page_contents', true);
+
+        // Clear post content
+        $post->post_content = "<div class='row no-gutters'><div class='card-deck'>";
+
+        foreach ($contents as $index => $content) {
+            $post->post_content .= "<div class='card'>";
+            $post->post_content .= "<a href='" . get_the_permalink($content['page']) . "'>";
+            $post->post_content .= "<img src='" . $content['image'] . "' alt =''>";
+            $post->post_content .= "</a>";
+            $post->post_content .= "<div class='card-body'>";
+            $post->post_content .= "<p class='text-center'>" . $content['text'] . "</p>";
+            $post->post_content .= "</div></div>";
+        }
+
+        $post->post_content .= "</div></div>";
+
+        remove_action('save_post', [$this, 'overridePageContents']);
+
+        wp_update_post($post);
+
+        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+    }
 }

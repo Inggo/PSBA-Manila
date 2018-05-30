@@ -22,7 +22,9 @@ class Theme
 
     private $current_post = null;
 
-    public $shortcode_registrar;
+    public $shortcode_registrar = [];
+
+    public $cpt_registrar = [];
     
     public function __construct($slug = 'theme', Customizer $customizer)
     {
@@ -30,7 +32,7 @@ class Theme
         $this->customizer = $customizer;
         $this->theme_data = wp_get_theme();
         $this->version = $this->theme_data->get('Version');
-        $this->shortcode_registrar = new ShortcodeRegistrar;
+        $this->shortcode_registrar[] = new ShortcodeRegistrar;
     }
 
     public function init()

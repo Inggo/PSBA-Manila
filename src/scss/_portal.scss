@@ -1,0 +1,15 @@
+.portal-page {
+    .card {
+        img {
+            transition: all .2s;
+            opacity: .8;
+        }
+
+        a:hover {
+            img {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+    }
+}

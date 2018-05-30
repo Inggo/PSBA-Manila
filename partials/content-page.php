@@ -3,7 +3,7 @@ global $post;
 ?>
 <article class="card">
     <?php if (get_post_meta($post->ID, '_wp_page_template', true) != 'templates/multi-content.php'): ?>
-    <h2 class="card-header"><?php the_title(); ?></h2>
+    <h3 class="card-header"><?php the_title(); ?></h3>
     <section class="card-body text-justify page-contents">
         <?php the_content(); ?>
     </section>
