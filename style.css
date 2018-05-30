@@ -9452,6 +9452,10 @@ html {
   font-size: 14px;
 }
 
+main {
+  margin-bottom: 20px;
+}
+
 main > section {
   margin-top: 20px;
 }
@@ -9493,6 +9497,10 @@ main h2 {
   margin-bottom: 20px;
 }
 
+main h2, main h3, main h4, main h5, main h6 {
+  color: #024182;
+}
+
 main table {
   width: 100%;
 }
@@ -9516,6 +9524,14 @@ img.alignleft {
 img.alignright {
   float: right;
   margin-left: 10px;
+}
+
+.page-contents h3, .page-contents h4, .page-contents h5, .page-contents h6 {
+  color: #000;
+}
+
+.page-contents.multi-content h3 {
+  color: #024182;
 }
 
 .site-header {
@@ -9691,12 +9707,14 @@ img.alignright {
 }
 
 .front-page-tabs .nav-tabs .nav-link,
-.front-page-tabs .nav-tabs .nav-item.show .nav-link {
+.front-page-tabs .nav-tabs .nav-item .nav-link {
+  -webkit-transition: all .2s;
+  transition: all .2s;
   border: none;
 }
 
 .front-page-tabs .nav-tabs .nav-link:hover,
-.front-page-tabs .nav-tabs .nav-item.show .nav-link:hover {
+.front-page-tabs .nav-tabs .nav-item .nav-link:hover {
   border: none;
 }
 
@@ -9704,6 +9722,10 @@ img.alignright {
 .front-page-tabs .nav-tabs .nav-item.show .nav-link {
   border: none;
   background: #024182;
+}
+
+.front-page-tabs .nav-tabs .nav-link.active h4,
+.front-page-tabs .nav-tabs .nav-item.show .nav-link h4 {
   color: #fff;
 }
 
@@ -9728,4 +9750,27 @@ img.alignright {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.contact-details a {
+  border-color: rgba(2, 65, 130, 0.5);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-details a:hover {
+  background: #024182;
+  color: #fff;
+}
+
+.contact-details b {
+  font-size: 1.25rem;
+}
+
+.contact-details h5 {
+  color: #024182;
 }

@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Template Name: Multi-Content Page
+ * Template Name: Contact Page
  *
  * @package WordPress
  * @subpackage psba-manila
  */
 
 global $theme;
-global $post;
 
 get_header();
 

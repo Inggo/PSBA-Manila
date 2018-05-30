@@ -1,0 +1,24 @@
+.contact-details {
+    a {
+        border-color: transparentize($accent-bg, .5);
+        transition: all .2s;
+        color: $black;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+            background: $accent-bg;
+            color: $accent-color;
+        }
+    }
+
+    b {
+        font-size: 1.25rem;
+    }
+
+    h5 {
+        color: $accent-bg;
+    }
+}

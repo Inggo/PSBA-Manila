@@ -4,6 +4,7 @@ namespace Inggo\WordPress;
 
 use Inggo\WordPress\Traits\DisplaysMessages;
 use Inggo\WordPress\Contracts\Customizer;
+use Inggo\WordPress\ShortcodeRegistrar;
 
 class Theme
 {
@@ -20,6 +21,8 @@ class Theme
     protected $alertMessage = '';
 
     private $current_post = null;
+
+    public $shortcode_registrar;
     
     public function __construct($slug = 'theme', Customizer $customizer)
     {
@@ -27,6 +30,7 @@ class Theme
         $this->customizer = $customizer;
         $this->theme_data = wp_get_theme();
         $this->version = $this->theme_data->get('Version');
+        $this->shortcode_registrar = new ShortcodeRegistrar;
     }
 
     public function init()
@@ -47,6 +51,10 @@ class Theme
         add_filter('previous_posts_link_attributes', [$this, 'postLinkAttributes']);
 
         add_filter('page_link', [$this, 'editPermalink'], 1110, 2);
+
+        // Shortcode <p> wrap fix
+        remove_filter( 'the_content', 'wpautop' );
+        add_filter( 'the_content', 'wpautop' , 12);
     }
 
     public function postLinkAttributes()
@@ -146,7 +154,7 @@ class Theme
         $this->current_post = $post;
     }
 
-    public function getCurrentPost($post)
+    public function getCurrentPost()
     {
         return $this->current_post;
     }
@@ -159,6 +167,13 @@ class Theme
     public function isCurrentPost($post)
     {
         return $this->hasCurrentPost() && $this->current_post->ID == $post->ID;
+    }
+
+    public function getCurrrentPostTemplate()
+    {
+        return $this->hasCurrentPost() && $this->current_post->post_type === 'page' ?
+            get_post_meta($parent_id, '_wp_page_template', true) :
+            null;
     }
 
     public function editPermalink($url, $post_id)

@@ -27,4 +27,11 @@ class Theme extends BaseTheme
     {
         wp_enqueue_script('main_js');
     }
+
+    protected function addImageSizes()
+    {
+        add_image_size('psba-small', 240, 240);
+        add_image_size('psba-medium', 480, 480);
+        add_image_size('psba-large', 960, 960);
+    }
 }

@@ -92,6 +92,37 @@ try {
         if (window.location.hash) {
             $('a[href="' + window.location.hash + '"]').tab('show');
         }
+
+        var scrollTo = null;
+
+        $('a[href^="' + location.protocol + '\/\/' + location.host + location.pathname + '"]').on('click', function (e) {
+            var hash = $(this).attr('href').split('#')[1];
+
+            if (!hash) {
+                return;
+            }
+
+            var id = '#' + hash;
+
+            if ($('a[href="' + id + '"]').length === 0) {
+                return;
+            }
+
+            e.preventDefault();
+            $('a[href="' + id + '"]').tab('show');
+
+            if (scrollTo) {
+                clearTimeout(scrollTo);
+            }
+
+            scrollTo = setTimeout(function () {
+                $("html, body").stop().animate({
+                    scrollTop: $(id).offset().top - 10
+                }, 400);
+            }, 400);
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
     });
 })(jQuery);
 
