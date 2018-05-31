@@ -2,6 +2,8 @@
 
 namespace Inggo\WordPress\PSBAManila\Traits;
 
+use WP_Query;
+
 trait ContentOverrides
 {
     public function overridePageContents($post_id, $post, $update)
@@ -20,6 +22,10 @@ trait ContentOverrides
 
         if ($page_template === 'templates/portal-page.php') {
             return $this->overridePortalPageContents($post);
+        }
+
+        if ($page_template === 'templates/personnel-page.php') {
+            return $this->overridePersonnelPageContents($post);
         }
     }
 
@@ -111,6 +117,164 @@ trait ContentOverrides
         }
 
         $post->post_content .= "</div></div>";
+
+        remove_action('save_post', [$this, 'overridePageContents']);
+
+        wp_update_post($post);
+
+        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+    }
+
+    private function overridePersonnelPageContents($post)
+    {
+        $page_type = get_post_meta($post->ID, 'personnel_page_type', true);
+
+        if ($page_type == 'board-members') {
+            return $this->applyBoardMemberPersonnel($post);
+        }
+
+        if ($page_type == 'officers') {
+            return $this->applyOfficerPersonnel($post);
+        }
+
+        if ($page_type == 'faculty') {
+            return $this->applyFacultyPersonnel($post);
+        }
+    }
+
+    private function applyBoardMemberPersonnel($post)
+    {
+        $personnel = get_posts([
+            'post_type' => 'personnel',
+            'tag' => 'board-member',
+            'order' => 'ASC',
+            'orderby' => 'menu_order',
+            'posts_per_page' => -1,
+        ]);
+
+        // Clear post content
+        $post_content = "<div class='row board-members'>";
+
+        foreach ($personnel as $person) {
+            $post_content .= "<div class='col col-md-6'><div class='card personnel-card'><div class='card-body text-center'>";
+
+            if (has_post_thumbnail($person->ID)) {
+                $post_content .= "<p><img src='" . get_the_post_thumbnail_url($person->ID) . "' alt='" . $person->post_title . "'></p>";
+            }
+
+            $post_content .= "<h5>" . get_post_meta($person->ID, 'board_position', true) . "</h5>";
+            $post_content .= '<p><b>' . $person->post_title . '</b>';
+
+            if ($title = get_post_meta($person->ID, 'titles', true)) {
+                $post_content .= ', ' . $title;
+            }
+
+            $post_content .= '</p>';
+            $post_content .= "</div></div></div>";
+        }
+
+        $post_content .= "</div>";
+
+        $post->post_content = $post_content;
+
+        remove_action('save_post', [$this, 'overridePageContents']);
+
+        wp_update_post($post);
+
+        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+    }
+
+    private function applyOfficerPersonnel($post)
+    {
+        $personnel = get_posts([
+            'post_type' => 'personnel',
+            'tag' => 'officer',
+            'order' => 'ASC',
+            'orderby' => 'menu_order',
+            'posts_per_page' => -1,
+        ]);
+
+        // Clear post content
+        $post_content = "<div class='row officers'>";
+
+        foreach ($personnel as $person) {
+            $post_content .= "<div class='col col-12'><div class='card personnel-card'><div class='card-body text-center'>";
+
+            if (has_post_thumbnail($person->ID)) {
+                $post_content .= "<p><img src='" . get_the_post_thumbnail_url($person->ID) . "' alt='" . $person->post_title . "'></p>";
+            }
+
+            $post_content .= "<h5>" . $person->post_title;
+
+            if ($title = get_post_meta($person->ID, 'titles', true)) {
+                $post_content .= ', ' . $title;
+            }
+
+            $post_content .= "</h5>";
+            $post_content .= '<p>' . get_post_meta($person->ID, 'officer_position', true) . '</p>';
+            $post_content .= "</div></div></div>";
+        }
+
+        $post_content .= "</div>";
+
+        $post->post_content = $post_content;
+
+        remove_action('save_post', [$this, 'overridePageContents']);
+
+        wp_update_post($post);
+
+        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+    }
+
+    private function applyFacultyPersonnel($post)
+    {
+        $personnel = get_posts([
+            'post_type' => 'personnel',
+            'tag' => 'faculty',
+            'order' => 'ASC',
+            'orderby' => 'menu_order',
+            'posts_per_page' => -1,
+        ]);
+
+        // Clear post content
+        $post_content = "";
+
+        $undergrad_content = "<div class='row faculty faculty-undergraduate'>" .
+            "<h4 class='col col-12'>Undergraduate Program Faculty</h4>";
+        $graduate_content = "<div class='row faculty faculty-graduate'>" .
+            "<h4 class='col col-12'>Graduate Program Faculty</h4>";
+        $shs_content = "<div class='row faculty faculty-shs'>" .
+            "<h4 class='col col-12'>Senior High School Faculty</h4>";
+
+        foreach ($personnel as $person) {
+            $card_content = "<div class='col col-4'><div class='card personnel-card'><div class='card-body text-center'>";
+
+            if (has_post_thumbnail($person->ID)) {
+                $card_content .= "<p><img src='" . get_the_post_thumbnail_url($person->ID) . "' alt='" . $person->post_title . "'></p>";
+            }
+
+            $card_content .= "<h6>" . $person->post_title;
+            $card_content .= "</h6>";
+            $card_content .= "</div></div></div>";
+
+            if (has_term('graduate', 'post_tag', $person)) {
+                $graduate_content .= $card_content;
+            }
+
+            if (has_term('undergraduate', 'post_tag', $person)) {
+                $undergrad_content .= $card_content;
+            }
+
+            if (has_term('senior-high', 'post_tag', $person)) {
+                $shs_content .= $card_content;
+            }
+        }
+
+        $post_content .= $undergrad_content . "</div><hr>" .
+            $graduate_content . "</div><hr>" .
+            $shs_content . "</div>";
+
+        $post->post_content = $post_content;
 
         remove_action('save_post', [$this, 'overridePageContents']);
 

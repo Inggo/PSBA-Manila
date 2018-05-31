@@ -39,6 +39,7 @@ class Admin extends BaseAdmin
         $this->addParentPageMetaBoxes();
         $this->addMultiContentPageMetaBoxes();
         $this->addContactPageMetaBoxes();
+        $this->addPersonnelPageMetaBoxes();
         $this->addPortalPageMetaBoxes();
     }
 
@@ -75,10 +76,10 @@ class Admin extends BaseAdmin
         $page_template = get_post_meta($post_id, '_wp_page_template', true);
 
         if ($page_template === 'templates/parent-page.php' ||
-            $page_template === 'templates/multi-content.php' ||
-            $page_template === 'templates/contact-page.php' ||
-            $page_template === 'templates/portal-page.php') {
-            // return $this->removeEditor();
+                $page_template === 'templates/multi-content.php' ||
+                $page_template === 'templates/contact-page.php' ||
+                $page_template === 'templates/portal-page.php') {
+            return $this->removeEditor();
         }
     }
 }

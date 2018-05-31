@@ -9775,6 +9775,21 @@ img.alignright {
   color: #024182;
 }
 
+.personnel-card {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.personnel-card .card-body img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+
+.personnel-card .card-body > :last-child {
+  margin-bottom: 0;
+}
+
 .portal-page .card img {
   -webkit-transition: all .2s;
   transition: all .2s;

@@ -3,6 +3,7 @@
 namespace Inggo\WordPress\PSBAManila\CPT;
 
 use Inggo\WordPress\AbstractCPT;
+use Inggo\WordPress\CMB2\Filters;
 
 class Personnel extends AbstractCPT
 {   
@@ -40,8 +41,8 @@ class Personnel extends AbstractCPT
         $args = array(
             'label'                 => __( 'Personnel', '$this->slug' ),
             'labels'                => $labels,
-            'supports'              => array( 'title', 'thumbnail', 'revisions' ),
-            'taxonomies'            => array( 'post_tag' ),
+            'supports'              => array('title', 'thumbnail', 'revisions', 'page-attributes'),
+            'taxonomies'            => array('post_tag'),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -64,14 +65,16 @@ class Personnel extends AbstractCPT
         add_filter('manage_personnel_posts_custom_column', [$this, 'applyColumnContents'], 10, 2);
         add_filter('gettext', [$this, 'replacePlaceholder']);
 
-        add_filter('cmb2_admin_init', [$this, 'addMetaBoxes']);
+        add_filter('cmb2_admin_init', [$this, 'addMetaBoxes'], 15);
     }
 
     public function applyColumns($posts_columns)
     {
         $posts_columns = [
+            'cb' => '<input type="checkbox" />',
             'title' => 'Title',
             'featured_image' => 'Photo',
+            'menu_order' => 'Order',
             'tags' => 'Tags',
             'date' => 'Date',
         ];
@@ -81,9 +84,12 @@ class Personnel extends AbstractCPT
 
     public function applyColumnContents($column_name, $post_ID)
     {
-        if ($column_name === 'featured_image' && $thumb = get_the_post_thumbnail_url($post_ID))
-        {
+        if ($column_name === 'featured_image' && $thumb = get_the_post_thumbnail_url($post_ID)) {
             echo '<img src="' . $thumb . '" alt="" width="100px" />';
+        }
+
+        if ($column_name === 'menu_order') {
+            echo get_post($post_ID)->menu_order;
         }
     }
 
@@ -120,7 +126,8 @@ class Personnel extends AbstractCPT
             'id'            => 'personnel_board_metabox',
             'title'         => __('Board Member Details'),
             'object_types'  => ['personnel'],
-            'show_on'       => ['key'   => 'taxonomy', 'value' => ['post_tag' => 'board-member']],
+            'show_on_cb'    => [Filters::class, 'hasTaxonomy'],
+            'show_on_terms' => ['post_tag' => ['board-member']],
             'context'       => 'normal',
             'priority'      => 'high',
             'show_names'    => true
@@ -136,7 +143,8 @@ class Personnel extends AbstractCPT
             'id'            => 'personnel_officer_metabox',
             'title'         => __('Officer Details'),
             'object_types'  => ['personnel'],
-            'show_on'       => ['key'   => 'taxonomy', 'value' => ['post_tag' => 'officer']],
+            'show_on_cb'    => [Filters::class, 'hasTaxonomy'],
+            'show_on_terms' => ['post_tag' => ['officer']],
             'context'       => 'normal',
             'priority'      => 'high',
             'show_names'    => true

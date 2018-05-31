@@ -130,6 +130,30 @@ trait CMB2MetaBoxes
         ]);
     }
 
+    private function addPersonnelPageMetaBoxes()
+    {
+        $cmb = new_cmb2_box([
+            'id'            => 'personnel_page_metabox',
+            'title'         => __('Personnel Page', $this->slug),
+            'object_types'  => ['page'],
+            'show_on'       => ['key' => 'page-template', 'value' => 'templates/personnel-page.php'],
+            'context'       => 'normal',
+            'priority'      => 'high',
+            'show_names'    => true
+        ]);
+
+        $cmb->add_field([
+            'name' => 'Page Type',
+            'type' => 'select',
+            'id' => 'personnel_page_type',
+            'options' => [
+                'board-members' => 'Board Members',
+                'officers' => 'Officers',
+                'faculty' => 'Faculty',
+            ],
+        ]);
+    }
+
     private function addPortalPageMetaBoxes()
     {
         $cmb = new_cmb2_box([

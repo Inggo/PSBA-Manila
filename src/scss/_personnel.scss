@@ -1,0 +1,16 @@
+.personnel-card {
+    margin-bottom: 30px;
+    position: relative;
+
+    .card-body {
+        img {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}
