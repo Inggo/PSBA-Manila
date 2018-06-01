@@ -21,3 +21,33 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+$a-color: $accent-bg;
+
+main {
+    a:not(.a-img):not(.btn):not(.list-group-item):not(.carousel-control-prev):not(.carousel-control-next) {
+        color: $a-color;
+        position: relative;
+
+        &::after {
+            content: "";
+            border-bottom: 1px solid $a-color;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: scaleX(0);
+            opacity: .8;
+            transition: opacity .1s, transform .4s;
+        }
+
+        &:hover {
+            text-decoration: none;
+            opacity: 1;
+
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+    }    
+}

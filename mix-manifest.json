@@ -1,4 +1,16 @@
 {
     "/script.js": "/script.js",
-    "/style.css": "/style.css"
+    "/style.css": "/style.css",
+    "/dist/footer.php": "/dist/footer.php",
+    "/dist/front-page.php": "/dist/front-page.php",
+    "/dist/functions.php": "/dist/functions.php",
+    "/dist/header.php": "/dist/header.php",
+    "/dist/index.php": "/dist/index.php",
+    "/dist/page.php": "/dist/page.php",
+    "/dist/single-curriculum.php": "/dist/single-curriculum.php",
+    "/dist/single.php": "/dist/single.php",
+    "/dist/top.php": "/dist/top.php",
+    "/dist/style.css": "/dist/style.css",
+    "/dist/script.js": "/dist/script.js",
+    "/dist/README.md": "/dist/README.md"
 }

@@ -1,4 +1,4 @@
-/*
+/*!
 Theme Name: PSBA-Manila
 Theme URI: http://dev.nyo.me/wp/psba-manila/
 Author: Inggo Espinosa
@@ -14,6 +14,7 @@ Text Domain: psba-manila
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+@import "animations";
 @import "global";
 @import "typography";
 @import "top";
@@ -22,3 +23,4 @@ Text Domain: psba-manila
 @import "contact";
 @import "personnel";
 @import "portal";
+@import "curriculum";

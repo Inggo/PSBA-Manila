@@ -1,0 +1,34 @@
+.curriculum-table {
+    font-size: 1.2rem;
+
+    th,
+    td {
+        border: none;
+    }
+
+    .row-header,
+    .row-total {
+        td:first-child {
+            text-transform: uppercase;
+        }
+    }
+
+    .row-header,
+    .row-subtotal,
+    .row-total {
+        font-weight: bold;
+    }
+
+    .row-normal {
+        td:first-child {
+            text-align: right;
+        }
+    }
+
+    .row-subtotal,
+    .row-total {
+        td:first-child {
+            text-align: right;
+        }
+    }
+}

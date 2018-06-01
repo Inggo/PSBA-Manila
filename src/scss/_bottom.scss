@@ -2,12 +2,42 @@
     background: $gray-800;
 }
 
-.footer-nav {
+.footer-widgets {
+    h3, h4, h5, h6 {
+        color: $white;
+    }
+
     padding-top: 15px;
     padding-bottom: 15px;
 
+    a::after {
+        content: "";
+        transform: scaleX(0);
+        border-bottom: 1px solid $white;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: transform .4s;
+        position: absolute;
+    }
+
+    .current-menu-item a,
+    a:hover {
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+
     li, a {
         color: $white;
+        opacity: .9;
+        transition: opacity .4s;
+        position: relative;
+
+        &:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
     }
 }
 
@@ -16,4 +46,41 @@
     padding: 1rem;
     color: $white;
     font-size: 0.8rem;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: none;
+    z-index: 9999;
+    text-align: center;
+    display: block;
+    width: 32px;
+    height: 32px;
+    opacity: .333;
+    -webkit-transition: opacity .4s;
+    transition: opacity .4s;
+
+    color: $white;
+
+    text-align: center;
+
+    background: $gray-700;
+    border-radius: 50%;
+    line-height: 48px;
+
+    &:hover {
+        opacity: 1;
+        color: $white;
+        text-decoration: none;
+    }
+
+    .btt-caret {
+        font-size: 1.5rem;
+        transform: scaleX(1.5);
+        display: block;
+        position: relative;
+        top: -6px;
+    }
 }

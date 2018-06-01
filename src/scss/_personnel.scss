@@ -1,6 +1,7 @@
 .personnel-card {
     margin-bottom: 30px;
     position: relative;
+    min-height: calc(100% - 30px);
 
     .card-body {
         img {
