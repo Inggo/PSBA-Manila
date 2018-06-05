@@ -37,6 +37,7 @@ class ThemeCustomizer implements Customizer
         $this->initializeSocialMedia();
         $this->initializeFooterPages();
         $this->initializeCopyrightInfo();
+        $this->initializeGoogleAnalytics();
     }
 
     /**
@@ -64,6 +65,12 @@ class ThemeCustomizer implements Customizer
     {
         $this->ch->addSection($this->slug . '_copyright_info', 'Copyright Info', 150);
         $this->ch->addControl('copyright', $this->slug . '_copyright_info', 'Copyright Text', '', 'textarea');
+    }
+
+    private function initializeGoogleAnalytics()
+    {
+        $this->ch->addSection($this->slug . '_google_analytics', 'Google Analytics', 150);
+        $this->ch->addControl('google_analytics', $this->slug . '_google_analytics', 'Tracking ID');
     }
 
     /**
