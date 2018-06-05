@@ -7,6 +7,7 @@ $children = get_children([
     'post_type' => 'page',
     'post_status' => 'publish',
     'order' => 'ASC',
+    'orderby' => 'menu_order'
 ]);
 ?>
 <h2><?php the_title(); ?></h2>

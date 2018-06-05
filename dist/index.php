@@ -14,7 +14,7 @@ $queried_object = get_queried_object();
 <section class="container">
     <?php if (!$queried_object && $_GET['s']): ?>
     <h2>Search Results</h2>
-    <?php else: ?>
+    <?php elseif ($queried_object): ?>
     <h2><?= $queried_object->name ?></h2>
     <?php endif; ?>
     <div class="row">

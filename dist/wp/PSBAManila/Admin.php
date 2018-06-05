@@ -46,8 +46,8 @@ class Admin extends BaseAdmin
     public function createDefaultCategories()
     {
         wp_insert_term('News', 'category');
-        wp_insert_term('Announcement', 'category');
-        wp_insert_term('Event', 'category');
+        wp_insert_term('Announcements', 'category');
+        wp_insert_term('Events', 'category');
 
         wp_insert_term('Board Member', 'post_tag');
         wp_insert_term('Officer', 'post_tag');

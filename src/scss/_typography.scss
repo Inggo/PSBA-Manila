@@ -85,3 +85,23 @@ article {
 .table.table-compact {
     width: auto;
 }
+
+ol > li > ol > li {
+    list-style: lower-alpha;
+    margin-bottom: 0;
+}
+
+ol > li > ol > li > ol > li {
+    list-style: lower-alpha;
+    margin-bottom: 0;
+}
+
+ol.list-paragraphed {
+    > li {
+        margin-bottom: 1rem;
+        > ol,
+        > p {
+            margin-bottom: 1rem;
+        }
+    }
+}

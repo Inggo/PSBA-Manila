@@ -21,7 +21,7 @@
         position: absolute;
     }
 
-    .current-menu-item a,
+    .current-menu-item > a,
     a:hover {
         &::after {
             transform: scaleX(1);

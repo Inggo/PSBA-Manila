@@ -61,7 +61,7 @@ class Theme extends BaseTheme
         register_sidebar([
             'id' => 'footer-left',
             'name' => 'Footer Widgets - Left',
-            'before_widget' => '<div class="col-md-4 footer-widgets footer-widgets--left">',
+            'before_widget' => '<div class="footer-widget footer-widget--left">',
             'after_widget' => '</div>',
             'before_title' => '<h3>',
             'after_title' => '</h3>',
@@ -70,7 +70,7 @@ class Theme extends BaseTheme
         register_sidebar([
             'id' => 'footer-center',
             'name' => 'Footer Widgets - Center',
-            'before_widget' => '<div class="col-md-4 footer-widgets footer-widgets--center">',
+            'before_widget' => '<div class="footer-widget footer-widget--center">',
             'after_widget' => '</div>',
             'before_title' => '<h3>',
             'after_title' => '</h3>',
@@ -79,7 +79,7 @@ class Theme extends BaseTheme
         register_sidebar([
             'id' => 'footer-right',
             'name' => 'Footer Widgets - Right',
-            'before_widget' => '<div class="col-md-4 footer-widgets footer-widgets--right">',
+            'before_widget' => '<div class="footer-widget footer-widget--right">',
             'after_widget' => '</div>',
             'before_title' => '<h3>',
             'after_title' => '</h3>',

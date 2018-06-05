@@ -2,7 +2,7 @@
 global $theme;
 
 $subquery = new WP_Query([
-    'category_name' => 'event',
+    'category_name' => 'events',
     'posts_per_page' => 10,
     'post_status' => 'publish',
 ]);

@@ -7,7 +7,7 @@ main {
         margin-top: 20px;
     }
 
-    margin-bottom: 20px;
+    margin-bottom: 80px;
 }
 
 article {
@@ -20,6 +20,8 @@ article {
 img {
     max-width: 100%;
     height: auto;
+    z-index: 10;
+    position: relative;
 }
 
 $a-color: $accent-bg;

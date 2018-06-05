@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-    <?php if (get_option('google_analytics')) ?>
+    <?php if (get_option('google_analytics')): ?>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?= esc_js(get_option('google_analytics')); ?>"></script>
     <script>
       window.dataLayer = window.dataLayer || [];

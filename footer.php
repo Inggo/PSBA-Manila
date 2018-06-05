@@ -2,9 +2,15 @@
 <footer class="site-footer">
     <section class="container">
         <div class="row">
-            <?php dynamic_sidebar("Footer Widgets - Left"); ?>
-            <?php dynamic_sidebar("Footer Widgets - Center"); ?>
-            <?php dynamic_sidebar("Footer Widgets - Right"); ?>
+            <div class="col-md-4 footer-widgets">
+                <?php dynamic_sidebar("Footer Widgets - Left"); ?>
+            </div>
+            <div class="col-md-4 footer-widgets">
+                <?php dynamic_sidebar("Footer Widgets - Center"); ?>
+            </div>
+            <div class="col-md-4 footer-widgets">
+                <?php dynamic_sidebar("Footer Widgets - Right"); ?>
+            </div>
         </div>
     </section>
     <section class="site-copyright text-center">

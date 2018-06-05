@@ -2,7 +2,7 @@
 global $theme;
 
 $subquery = new WP_Query([
-    'category_name' => 'announcement',
+    'category_name' => 'announcements',
     'posts_per_page' => 5,
     'post_status' => 'publish',
 ]);

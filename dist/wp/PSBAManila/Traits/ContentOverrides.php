@@ -232,7 +232,8 @@ trait ContentOverrides
             'post_type' => 'personnel',
             'tag' => 'faculty',
             'order' => 'ASC',
-            'orderby' => 'title',
+            'orderby' => 'meta_value',
+            'meta_key' => 'faculty_name',
             'posts_per_page' => -1,
         ]);
 
