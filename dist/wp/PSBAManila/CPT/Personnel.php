@@ -157,5 +157,30 @@ class Personnel extends AbstractCPT
             'id'   => 'officer_position',
             'type' => 'text',
         ]);
+
+        $cmb3 = new_cmb2_box([
+            'id'            => 'personnel_faculty_metabox',
+            'title'         => __('Faculty Details'),
+            'object_types'  => ['personnel'],
+            'show_on_cb'    => [Filters::class, 'hasTaxonomy'],
+            'show_on_terms' => ['post_tag' => ['faculty']],
+            'context'       => 'normal',
+            'priority'      => 'high',
+            'show_names'    => true
+        ]);
+
+        $cmb3->add_field([
+            'name' => 'Display Name',
+            'id'   => 'faculty_name',
+            'type' => 'text',
+        ]);
+
+        $cmb3->add_field([
+            'name' => 'CV / Bio',
+            'id'   => 'faculty_bio',
+            'type' => 'wysiwyg',
+            'options' => array(),
+            'default' => '',
+        ]);
     }
 }

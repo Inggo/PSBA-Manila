@@ -32,13 +32,14 @@ class Theme extends BaseTheme
         wp_register_script('photoswipe', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js', ['photoswipe-ui'], '4.1.2');
 
         wp_register_style('google-webfonts', 'https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:400,700', [], '');
+        wp_register_style('google-webfonts-accent', 'https://fonts.googleapis.com/css?family=Nanum+Myeongjo&text=“”');
         wp_register_style('photoswipe-skin', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css', [], '4.1.2');
         wp_register_style('photoswipe', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css', ['photoswipe-skin'], '4.1.2');
     }
 
     public function enqueueStyles()
     {
-        wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', ['google-webfonts', 'bootstrap_css', 'photoswipe'], $this->version);
+        wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', ['google-webfonts', 'google-webfonts-accent', 'bootstrap_css', 'photoswipe'], $this->version);
     }
 
     public function enqueueScripts()

@@ -243,15 +243,39 @@ trait ContentOverrides
         $graduate_content = "";
         $shs_content = "";
 
+        $faculty_modals = [];
+        $faculty_modal_contents = [];
+
         foreach ($personnel as $person) {
+            $modal_toggle = "<a href='javascript:;' data-toggle='modal' data-target='#faculty-" . $person->ID . "' class='disable-ps'>";
             $card_content = "<div class='col col-4'><div class='card personnel-card'><div class='card-body text-center'>";
 
             if (has_post_thumbnail($person->ID)) {
-                $card_content .= "<p><img src='" . get_the_post_thumbnail_url($person->ID) . "' alt='" . $person->post_title . "'></p>";
+                $card_content .= "<p>{$modal_toggle}<img src='" . get_the_post_thumbnail_url($person->ID) . "' alt='" . $person->post_title . "'></a></p>";
             }
 
-            $card_content .= "<h6>" . $person->post_title;
-            $card_content .= "</h6>";
+            $card_content .= "<h6>{$modal_toggle}" . $person->post_title;
+            $card_content .= "</a></h6>";
+
+            $modal_content = get_post_meta($person->ID, 'faculty_bio', true);
+
+            if ($modal_content && !in_array($person->ID, $faculty_modals)) {
+                $faculty_modals[] = $person->ID;
+                $faculty_modal_content .= '<div class="modal fade" tabindex="-1" role="dialog" id="faculty-' . $person->ID . '">';
+                $faculty_modal_content .= '<div class="modal-dialog modal-dialog-centered" role="document">';
+                $faculty_modal_content .= '<div class="modal-content">';
+                $faculty_modal_content .= '<div class="modal-header">';
+                $faculty_modal_content .= '<h5 class="modal-title">' . $person->post_title . '</h5>';
+                $faculty_modal_content .= '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                $faculty_modal_content .= '<span aria-hidden="true">&times;</span>';
+                $faculty_modal_content .= '</button>';
+                $faculty_modal_content .= '</div>';
+                $faculty_modal_content .= '<div class="modal-body">';
+                $faculty_modal_content .= $modal_content;
+                $faculty_modal_content .= '</div></div></div></div>';
+                $faculty_modal_contents[] = $faculty_modal_content;
+            }
+
             $card_content .= "</div></div></div>";
 
             if (has_term('graduate', 'post_tag', $person)) {
@@ -291,6 +315,10 @@ trait ContentOverrides
         }
 
         $post_content .= implode("<hr>", $valid_contents);
+
+        foreach ($faculty_modal_contents as $modal_content) {
+            $post_content .= $modal_content;
+        }
 
         $post->post_content = $post_content;
 

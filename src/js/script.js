@@ -15,7 +15,7 @@ catch(e){window.attachEvent("onload", $buo_f)};
     $(document).ready(function () {
         pswp = $('.pswp')[0];
 
-        itemSources = $('article:not(.excerpt) a > img');
+        itemSources = $('article:not(.excerpt) a:not(.disable-ps) > img');
 
         // Preload images
         $(itemSources).each(function () {

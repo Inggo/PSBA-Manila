@@ -105,3 +105,36 @@ ol.list-paragraphed {
         }
     }
 }
+
+blockquote {
+    &.blockquote {
+        position: relative;
+        padding-left: 5rem;
+        padding-right: 5rem;
+
+        &::after,
+        &::before {
+            content: "“";
+            position: absolute;
+            font-family: $font-accent;
+            font-size: 10rem;
+            top: -2.25rem;
+        }
+
+        &::before {
+            left: 0;
+        }
+
+        &::after {
+            transform: rotate(180deg);
+            right: 0;
+        }
+    }
+
+    &.gsb-mission {
+        &::after,
+        &::before {
+            color: $accent-bg;
+        }
+    }
+}

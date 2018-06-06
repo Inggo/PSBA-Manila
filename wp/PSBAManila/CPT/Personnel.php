@@ -174,5 +174,13 @@ class Personnel extends AbstractCPT
             'id'   => 'faculty_name',
             'type' => 'text',
         ]);
+
+        $cmb3->add_field([
+            'name' => 'CV / Bio',
+            'id'   => 'faculty_bio',
+            'type' => 'wysiwyg',
+            'options' => array(),
+            'default' => '',
+        ]);
     }
 }
