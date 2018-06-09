@@ -23,6 +23,19 @@ class Admin
         add_action('admin_init', [$this, 'hideEditor']);
         add_action('cmb2_admin_init', [$this, 'addMetaBoxes']);
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_filter('site_url',  [$this, 'adminUrl'], 10, 3);
+    }
+
+    public function adminUrl($url, $path, $orig_scheme)
+    {
+        if (!defined('WP_ADMIN_DIR')) {
+            return $url;
+        }
+
+        $old  = array("/(wp-admin)/");
+        $admin_dir = WP_ADMIN_DIR;
+        $new  = array($admin_dir);
+        return preg_replace($old, $new, $url, 1);
     }
 
     public function initCMB2()

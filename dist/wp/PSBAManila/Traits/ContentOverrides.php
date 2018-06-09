@@ -244,6 +244,7 @@ trait ContentOverrides
         $shs_content = "";
 
         $faculty_modals = [];
+        $faculty_modal_contents = [];
 
         foreach ($personnel as $person) {
             $modal_toggle = "<a href='javascript:;' data-toggle='modal' data-target='#faculty-" . $person->ID . "' class='disable-ps'>";
@@ -256,20 +257,23 @@ trait ContentOverrides
             $card_content .= "<h6>{$modal_toggle}" . $person->post_title;
             $card_content .= "</a></h6>";
 
-            if ($modal_content = get_post_meta($person->ID, 'faculty_bio', true) && !in_array($person->ID, $faculty_modals)) {
+            $modal_content = get_post_meta($person->ID, 'faculty_bio', true);
+
+            if ($modal_content && !in_array($person->ID, $faculty_modals)) {
                 $faculty_modals[] = $person->ID;
-                $card_content .= '<div class="modal" tabindex="-1" role="dialog" id="#faculty-' . $person->ID . '">';
-                $card_content .= '<div class="modal-dialog" role="document">';
-                $card_content .= '<div class="modal-content">';
-                $card_content .= '<div class="modal-header">';
-                $card_content .= '<h5 class="modal-title">' . $person->post_title . '</h5>';
-                $card_content .= '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                $card_content .= '<span aria-hidden="true">&times;</span>';
-                $card_content .= '</button>';
-                $card_content .= '</div>';
-                $card_content .= '<div class="modal-body">';
-                $card_content .= $modal_content;
-                $card_content .= '</div></div></div></div>';
+                $faculty_modal_content .= '<div class="modal fade" tabindex="-1" role="dialog" id="faculty-' . $person->ID . '">';
+                $faculty_modal_content .= '<div class="modal-dialog modal-dialog-centered" role="document">';
+                $faculty_modal_content .= '<div class="modal-content">';
+                $faculty_modal_content .= '<div class="modal-header">';
+                $faculty_modal_content .= '<h5 class="modal-title">' . $person->post_title . '</h5>';
+                $faculty_modal_content .= '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+                $faculty_modal_content .= '<span aria-hidden="true">&times;</span>';
+                $faculty_modal_content .= '</button>';
+                $faculty_modal_content .= '</div>';
+                $faculty_modal_content .= '<div class="modal-body">';
+                $faculty_modal_content .= $modal_content;
+                $faculty_modal_content .= '</div></div></div></div>';
+                $faculty_modal_contents[] = $faculty_modal_content;
             }
 
             $card_content .= "</div></div></div>";
@@ -311,6 +315,10 @@ trait ContentOverrides
         }
 
         $post_content .= implode("<hr>", $valid_contents);
+
+        foreach ($faculty_modal_contents as $modal_content) {
+            $post_content .= $modal_content;
+        }
 
         $post->post_content = $post_content;
 

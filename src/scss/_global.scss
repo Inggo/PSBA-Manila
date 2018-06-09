@@ -12,9 +12,10 @@ main {
 
 article {
     figure {
-        float: left;
-        margin-right: 15px;
-    }    
+        img {
+            margin: 0 auto;
+        }
+    }
 }
 
 img {
