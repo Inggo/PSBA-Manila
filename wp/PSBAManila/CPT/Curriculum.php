@@ -51,7 +51,7 @@ class Curriculum extends AbstractCPT
             'show_in_nav_menus'     => false,
             'can_export'            => true,
             'has_archive'           => false,
-            'exclude_from_search'   => true,
+            'exclude_from_search'   => false,
             'publicly_queryable'    => true,
             'rewrite'               => true,
             'capability_type'       => 'post',
@@ -64,7 +64,7 @@ class Curriculum extends AbstractCPT
 
         add_filter('cmb2_admin_init', [$this, 'addMetaBoxes'], 15);
 
-        add_action('save_post', [$this, 'applyContents'], 10, 3);
+        add_action('save_post', [$this, 'applyContents'], 20, 3);
     }
 
     public function applyColumns($posts_columns)
@@ -230,7 +230,7 @@ class Curriculum extends AbstractCPT
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'applyContents']);
+        add_action('save_post', [$this, 'applyContents'], 20, 3);
     }
 
     private function applyRowContents($row, $index)

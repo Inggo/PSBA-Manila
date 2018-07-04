@@ -29,8 +29,8 @@ $social-platforms: facebook google linkedin twitter;
     background-repeat: no-repeat;
     background-size: cover;
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 27px;
+    height: 27px;
 }
 
 @each $medium in $social-platforms {

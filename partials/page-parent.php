@@ -21,7 +21,7 @@ $children = get_children([
                         active
                     <?php endif; ?>
                     " id="page-<?= $post->post_name ?>-tab" data-toggle="tab" href="#page-<?= $post->post_name ?>" role="tab" aria-controls="home"
-                    aria-selected="<?= ((!$theme->hasCurrentPost() && $index === 0) || $theme->isCurrentPost($post)) ? 'true' : 'false'; ?>"><?php the_title(); ?></a>
+                    aria-selected="<?= ((!$theme->hasCurrentPost() && $i === 0) || $theme->isCurrentPost($post)) ? 'true' : 'false'; ?>"><?php the_title(); ?></a>
                 </a>
                 <?php $i++; endforeach; wp_reset_postdata(); ?>
             </div>

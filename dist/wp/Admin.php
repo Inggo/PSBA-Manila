@@ -28,7 +28,11 @@ class Admin
 
     public function adminUrl($url, $path, $orig_scheme)
     {
-        $old  = array( "/(wp-admin)/");  
+        if (!defined('WP_ADMIN_DIR')) {
+            return $url;
+        }
+
+        $old  = array("/(wp-admin)/");
         $admin_dir = WP_ADMIN_DIR;
         $new  = array($admin_dir);
         return preg_replace($old, $new, $url, 1);

@@ -12,7 +12,7 @@ $queried_object = get_queried_object();
 
 ?>
 <section class="container">
-    <?php if (!$queried_object && $_GET['s']): ?>
+    <?php if (!$queried_object && array_key_exists('s', $_GET) && $_GET['s']): ?>
     <h2>Search Results</h2>
     <?php elseif ($queried_object): ?>
     <h2><?= $queried_object->name ?></h2>

@@ -53,6 +53,7 @@ catch(e){window.attachEvent("onload", $buo_f)};
 
             var scrollTo = null;
 
+            // Initial active page
             $('a[href^="' + location.protocol+'\/\/'+location.host+location.pathname + '"]').on('click', function (e) {
                 var hash = $(this).attr('href').split('#')[1];
 
