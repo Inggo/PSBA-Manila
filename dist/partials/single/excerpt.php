@@ -7,7 +7,7 @@
             <img src="<?= get_option('header_logo'); ?>" alt="">
             <?php endif; ?>
         </a>
-    </div>
+    </div>ss
     <div class="col">
         <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
         <?php the_excerpt(); ?>
