@@ -26,10 +26,9 @@ class Theme
 
     public $cpt_registrar = [];
     
-    public function __construct($slug = 'theme', Customizer $customizer)
+    public function __construct($slug = 'theme')
     {
         $this->slug = $slug;
-        $this->customizer = $customizer;
         $this->theme_data = wp_get_theme();
         $this->version = $this->theme_data->get('Version');
         $this->shortcode_registrar[] = new ShortcodeRegistrar;
@@ -37,9 +36,13 @@ class Theme
 
     public function init()
     {
+        // Setup theme customizer
+        $customizer = apply_filters('Inggo\WordPress\Filters\ThemeCustomizerClass', ThemeCustomizer::class);
+        $this->customizer = new $customizer();
+
         // Add theme hooks
-        add_action('after_setup_theme', [$this, 'setup']);
-        add_action('after_setup_theme', [$this, 'disableAdminBar']);
+        add_action('after_setup_theme', [$this, 'setup'], 100);
+        add_action('after_setup_theme', [$this, 'disableAdminBar'], 100);
         
         add_action('wp_enqueue_scripts', [$this, 'registerScriptStyles']);
         add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);

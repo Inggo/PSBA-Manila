@@ -9,10 +9,13 @@ class Theme extends BaseTheme
 {
     public function __construct()
     {
-        parent::__construct('psba-manila', new ThemeCustomizer);
+        parent::__construct('psba-manila');
         $this->cpt_registrar[] = new CPTRegistrar;
 
         add_filter('pre_get_posts', [$this, 'addCPTToSearch']);
+        add_filter('Inggo\WordPress\Filters\ThemeCustomizerClass', function ($class) {
+            return ThemeCustomizer::class;
+        }, 10);
     }
 
     public function addCPTToSearch($query)

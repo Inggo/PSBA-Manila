@@ -29,7 +29,7 @@ trait ContentOverrides
         }
     }
 
-    private function overrideMultiPageContents($post)
+    protected function overrideMultiPageContents($post)
     {
         $contents = get_post_meta($post->ID, 'multi_page_contents', true);
 
@@ -49,7 +49,7 @@ trait ContentOverrides
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
-    private function overrideContactPageContents($post)
+    protected function overrideContactPageContents($post)
     {
         $contents = get_post_meta($post->ID, 'content_top', true);
         $emails = get_post_meta($post->ID, 'contact_email_addresses', true);
@@ -99,7 +99,7 @@ trait ContentOverrides
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
-    private function overridePortalPageContents($post)
+    protected function overridePortalPageContents($post)
     {
         $contents = get_post_meta($post->ID, 'portal_page_contents', true);
 
@@ -125,7 +125,7 @@ trait ContentOverrides
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
-    private function overridePersonnelPageContents($post)
+    protected function overridePersonnelPageContents($post)
     {
         $page_type = get_post_meta($post->ID, 'personnel_page_type', true);
 
@@ -142,7 +142,7 @@ trait ContentOverrides
         }
     }
 
-    private function applyBoardMemberPersonnel($post)
+    protected function applyBoardMemberPersonnel($post)
     {
         $personnel = get_posts([
             'post_type' => 'personnel',
@@ -184,7 +184,7 @@ trait ContentOverrides
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
-    private function applyOfficerPersonnel($post)
+    protected function applyOfficerPersonnel($post)
     {
         $personnel = get_posts([
             'post_type' => 'personnel',
@@ -226,7 +226,7 @@ trait ContentOverrides
         add_action('save_post', [$this, 'overridePageContents'], 10, 3);
     }
 
-    private function applyFacultyPersonnel($post)
+    protected function applyFacultyPersonnel($post)
     {
         $personnel = get_posts([
             'post_type' => 'personnel',

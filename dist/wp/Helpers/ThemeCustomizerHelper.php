@@ -5,6 +5,7 @@ namespace Inggo\WordPress;
 use WP_Customize_Manager;
 use WP_Customize_Control;
 use WP_Customize_Image_Control;
+use WP_Customize_Media_Control;
 
 class ThemeCustomizerHelper
 {
@@ -57,6 +58,21 @@ class ThemeCustomizerHelper
     {
         $this->addSetting($name);
         $this->manager->add_control(new WP_Customize_Image_Control(
+            $this->manager,
+            $name,
+            array(
+                'label'       => __($label, $this->slug),
+                'description' => __($description, $this->slug),
+                'section'     => $section,
+                'settings'    => $name,
+            )
+        ));
+    }
+
+    public function addFileControl($name, $section, $label, $description = '')
+    {
+        $this->addSetting($name);
+        $this->manager->add_control(new WP_Customize_Media_Control(
             $this->manager,
             $name,
             array(
