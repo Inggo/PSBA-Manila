@@ -35,6 +35,11 @@ catch(e){window.attachEvent("onload", $buo_f)};
                     h: img.height
                 };
 
+                // Apply figcaption if present
+                if ($(this).parent().next().is('figcaption')) {
+                    item.title = $(this).parent().next().text();
+                }
+
                 items.push(item);
             });
 

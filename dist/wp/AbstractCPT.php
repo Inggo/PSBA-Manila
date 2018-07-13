@@ -6,7 +6,7 @@ abstract class AbstractCPT
 {
     public function __construct()
     {
-        add_action('init', [$this, 'register'], 0);
+        add_action('init', [$this, 'register'], 1);
     }
 
     abstract public function register();

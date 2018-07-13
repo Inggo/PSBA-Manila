@@ -47,6 +47,21 @@ main {
     }
 }
 
+figure {
+    display: table;
+    position: relative;
+    max-width: 100%;
+
+    figcaption {
+        display: table-caption;
+        caption-side: bottom;
+        font-size: .9em;
+        text-align: center;
+        font-weight: 600;
+        font-style: italic;
+    }
+}
+
 img {
     &.alignleft {
         float: left;
@@ -141,4 +156,8 @@ blockquote {
 
 .text-normal {
     text-transform: none !important;
+}
+
+.pswp__caption__center {
+    text-align: center;
 }

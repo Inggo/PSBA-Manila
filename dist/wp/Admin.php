@@ -22,7 +22,7 @@ class Admin
         $this->initCmb2();
         add_action('admin_init', [$this, 'hideEditor']);
         add_action('cmb2_admin_init', [$this, 'addMetaBoxes']);
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
         add_filter('site_url',  [$this, 'adminUrl'], 10, 3);
     }
 
@@ -133,11 +133,11 @@ class Admin
             $post->post_content .= "\n";
         }
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 
     private function colorChoices($pre = 'is')

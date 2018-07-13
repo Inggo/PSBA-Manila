@@ -109,6 +109,12 @@ class Theme
         // Add thumbnail support
         add_theme_support('post-thumbnails');
 
+        add_theme_support('html5', [
+            'gallery',
+            'search-form',
+            'caption',
+        ]);
+
         // Set the thumbnail size
         set_post_thumbnail_size(420, 280);
 
