@@ -42,11 +42,11 @@ trait ContentOverrides
             $post->post_content .= "<div class='card-body'><div class='card-text'>" . $content['content'] . "</div></div>\n";
         }
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 
     protected function overrideContactPageContents($post)
@@ -92,11 +92,11 @@ trait ContentOverrides
 
         $post->post_content .= "</div></div></div></div></div>";
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 
     protected function overridePortalPageContents($post)
@@ -118,11 +118,11 @@ trait ContentOverrides
 
         $post->post_content .= "</div></div>";
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 
     protected function overridePersonnelPageContents($post)
@@ -177,11 +177,11 @@ trait ContentOverrides
 
         $post->post_content = $post_content;
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 
     protected function applyOfficerPersonnel($post)
@@ -219,11 +219,11 @@ trait ContentOverrides
 
         $post->post_content = $post_content;
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 
     protected function applyFacultyPersonnel($post)
@@ -322,10 +322,10 @@ trait ContentOverrides
 
         $post->post_content = $post_content;
 
-        remove_action('save_post', [$this, 'overridePageContents']);
+        remove_action('save_post', [$this, 'overridePageContents'], 20);
 
         wp_update_post($post);
 
-        add_action('save_post', [$this, 'overridePageContents'], 10, 3);
+        add_action('save_post', [$this, 'overridePageContents'], 20, 3);
     }
 }
