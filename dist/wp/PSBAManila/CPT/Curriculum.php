@@ -226,7 +226,7 @@ class Curriculum extends AbstractCPT
             $post->post_content .= '</div>';
         }
 
-        remove_action('save_post', [$this, 'applyContents']);
+        remove_action('save_post', [$this, 'applyContents'], 20);
 
         wp_update_post($post);
 

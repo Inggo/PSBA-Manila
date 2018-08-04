@@ -151,7 +151,7 @@ class Proceedings extends AbstractCPT
         $post->post_content .= "\n\n" . get_post_meta($post_id, 'location', true);
 
         // Avoid infinite loop
-        remove_action('save_post', [$this, 'applyContents']);
+        remove_action('save_post', [$this, 'applyContents'], 30);
 
         wp_update_post($post);
 

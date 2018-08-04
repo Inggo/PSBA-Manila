@@ -5,7 +5,7 @@ get_template_part('partials/front-page/content', 'banners');
 $tabs = [
     'news' => 'News',
     'announcements' => 'Announcements',
-    'events' => 'Upcoming Events',
+    'events' => 'Events',
     'links' => 'Partners and Linkages',
 ];
 

@@ -53,7 +53,7 @@ foreach ($fields as $field => $t) {
             <div class="tab-content" id="<?= $post->post_name ?>-tab-contents">
                 <?php foreach ($contents as $field => $content): ?>
                 <div class="tab-pane fade
-                    <?= $i == $first_tab ? 'active show' : '' ?>"
+                    <?= $field == $first_tab ? 'active show' : '' ?>"
                     " id="<?= $post->post_name . '-' . $field ?>">
                     <article class="card">
                         <h3 class="card-header"><?= $fields[$field]; ?></h3>
