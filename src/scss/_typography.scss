@@ -52,6 +52,12 @@ figure {
     position: relative;
     max-width: 100%;
 
+    margin: 0 0 1rem;
+
+    &.aligncenter {
+        margin: 0 auto 1rem;
+    }
+
     figcaption {
         display: table-caption;
         caption-side: bottom;

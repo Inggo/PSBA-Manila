@@ -255,7 +255,13 @@ trait ContentOverrides
                 $card_content .= "<p>{$modal_toggle}<img src='" . get_the_post_thumbnail_url($person->ID) . "' alt='" . $person->post_title . "'></a></p>";
             }
 
-            $card_content .= "<h6>{$modal_toggle}" . $person->post_title;
+            $person_title = $person->post_title;
+
+            if ($title = get_post_meta($person->ID, 'titles', true)) {
+                $post_content .= ', ' . $title;
+            }
+
+            $card_content .= "<h6>{$modal_toggle}" . $person_title;
             $card_content .= "</a></h6>";
 
             $modal_content = get_post_meta($person->ID, 'faculty_bio', true);
@@ -266,7 +272,7 @@ trait ContentOverrides
                 $faculty_modal_content .= '<div class="modal-dialog modal-dialog-centered" role="document">';
                 $faculty_modal_content .= '<div class="modal-content">';
                 $faculty_modal_content .= '<div class="modal-header">';
-                $faculty_modal_content .= '<h5 class="modal-title">' . $person->post_title . '</h5>';
+                $faculty_modal_content .= '<h5 class="modal-title">' . $person_title . '</h5>';
                 $faculty_modal_content .= '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
                 $faculty_modal_content .= '<span aria-hidden="true">&times;</span>';
                 $faculty_modal_content .= '</button>';

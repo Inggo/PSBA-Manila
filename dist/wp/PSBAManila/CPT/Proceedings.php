@@ -128,8 +128,34 @@ class Proceedings extends AbstractCPT
             'default' => '',
         ]);
 
-        $cmb->add_field([
-            'name' => 'Gallery',
+        $cmb2 = new_cmb2_box([
+            'id'            => 'gallery_metabox',
+            'title'         => __('Gallery'),
+            'object_types'  => ['proceedings'],
+            'context'       => 'normal',
+            'priority'      => 'high',
+            'show_names'    => true
+        ]);
+
+        $gallery_field_id = $cmb2->add_field([
+            'id' => 'gallery',
+            'type' => 'group',
+            'options' => [
+                'group_title'   => __('Section {#}', $this->slug),
+                'add_button'    => __('Add Section', $this->slug),
+                'remove_button' => __('Remove Section', $this->slug),
+                'sortable'      => true
+            ]
+        ]);
+
+        $cmb2->add_group_field($gallery_field_id, [
+            'name' => 'Section Title',
+            'id'   => 'section_title',
+            'type' => 'text',
+        ]);
+
+        $cmb2->add_group_field($gallery_field_id, [
+            'name' => 'Gallery Images',
             'id'   => 'gallery',
             'type' => 'file_list',
         ]);

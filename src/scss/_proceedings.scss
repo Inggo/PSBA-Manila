@@ -1,6 +1,11 @@
 .proceedings-gallery {
-    img {
+    figure {
         display: block;
         margin: 10px auto;
+
+        figcaption {
+            display: none;
+        }
     }
 }
+

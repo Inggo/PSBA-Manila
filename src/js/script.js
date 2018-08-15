@@ -12,8 +12,28 @@ catch(e){window.attachEvent("onload", $buo_f)};
     var itemSources;
     var items = [];
 
+    function getImageSize(img, callback) {
+        var $img = $(img);
+
+        var wait = setInterval(function() {
+            var w = $img[0].naturalWidth,
+                h = $img[0].naturalHeight;
+            if (w && h) {
+                clearInterval(wait);
+                callback.apply(this, [w, h]);
+            }
+        }, 30);
+    }
+
     $(document).ready(function () {
         pswp = $('.pswp')[0];
+
+        // Find all a > img
+        var aImg = $('a[href$=".pdf"] > img');
+
+        aImg.each(function () {
+            $(this).parent().addClass('disable-ps');
+        });
 
         itemSources = $('article:not(.excerpt) a:not(.disable-ps) > img');
 
@@ -27,10 +47,11 @@ catch(e){window.attachEvent("onload", $buo_f)};
             // Apply items on load
             $(itemSources).each(function () {
                 var img = new Image();
-                img.src = $(this).parent().attr('href');
+                var imgsrc = $(this).parent().attr('href');
+                img.src = imgsrc;
 
                 var item = {
-                    src: img.src,
+                    src: imgsrc,
                     w: img.width,
                     h: img.height
                 };

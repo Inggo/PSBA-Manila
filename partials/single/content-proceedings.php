@@ -5,7 +5,7 @@ $title = get_post_meta($post->ID, 'page_title', true);
 $fields = [
     'concept_note' => 'Concept Note',
     'speaker_profiles' => 'Speaker Profiles',
-    'program' => 'Program of Activities',
+    'program_of_activities' => 'Program of Activities',
     'proceedings' => 'Proceedings',
     'location' => 'Venue Map / Location',
     'gallery' => 'Gallery',
@@ -24,6 +24,43 @@ foreach ($fields as $field => $t) {
 
     if (!isset($first_tab)) {
         $first_tab = $field;
+    }
+}
+
+function print_proceedings_content($field, $content)
+{
+    if ($field === 'gallery') {
+        return print_proceedings_gallery($content);
+    }
+    return do_shortcode($content);
+}
+
+function print_proceedings_gallery($gallery)
+{
+    foreach ($gallery as $section) {
+        ?>
+        <h4><?= $section["section_title"]; ?></h4>
+        <div class="proceedings-gallery row">
+        <?php
+        if (array_key_exists("gallery", $section) && $section["gallery"]):
+            foreach ($section["gallery"] as $attachment_id => $attachment_url):
+            ?>
+            <div class="col-sm-3 col-md-2">
+                <figure>
+                    <a href="<?= $attachment_url ?>">
+                        <?= wp_get_attachment_image($attachment_id, 'thumbnail'); ?>
+                    </a>
+                    <?php if (wp_get_attachment_caption($attachment_id)): ?>
+                    <figcaption><?= wp_get_attachment_caption($attachment_id); ?></figcaption>
+                    <?php endif; ?>
+                </figure>
+            </div>
+            <?php
+            endforeach;
+        endif;
+        ?>
+        </div>
+        <?php
     }
 }
 
@@ -58,19 +95,7 @@ foreach ($fields as $field => $t) {
                     <article class="card">
                         <h3 class="card-header"><?= $fields[$field]; ?></h3>
                         <div class="card-body">
-                            <?php if ($field === 'gallery'): ?>
-                                <div class="proceedings-gallery row">
-                                <?php foreach ($content as $photo_id => $photo): ?>
-                                    <div class="col col-3">
-                                        <a href="<?= $photo; ?>">
-                                            <?= wp_get_attachment_image($photo_id, 'thumbnail') ?>
-                                        </a>
-                                    </div>
-                                <?php endforeach; ?>
-                                </div>
-                            <?php else: ?>
-                            <?= $content; ?>
-                            <?php endif; ?>
+                            <?= print_proceedings_content($field, $content); ?>
                         </div>
                     </article>
                 </div>
