@@ -104,7 +104,7 @@ trait ContentOverrides
         $contents = get_post_meta($post->ID, 'portal_page_contents', true);
 
         // Clear post content
-        $post->post_content = "<div class='row no-gutters'><div class='card-deck'>";
+        $post->post_content = "<div class='row no-gutters'><div class='card-deck ml-auto mr-auto'>";
 
         foreach ($contents as $index => $content) {
             $post->post_content .= "<div class='card'>";

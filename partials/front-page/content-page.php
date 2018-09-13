@@ -3,10 +3,9 @@
 get_template_part('partials/front-page/content', 'banners');
 
 $tabs = [
-    'news' => 'News',
+    'news' => 'News &amp; Events',
     'announcements' => 'Announcements',
-    'events' => 'Events',
-    'links' => 'Partners and Linkages',
+    'links' => 'Partners &amp; Linkages',
 ];
 
 ?>
