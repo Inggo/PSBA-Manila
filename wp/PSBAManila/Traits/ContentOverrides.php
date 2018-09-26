@@ -258,7 +258,7 @@ trait ContentOverrides
             $person_title = $person->post_title;
 
             if ($title = get_post_meta($person->ID, 'titles', true)) {
-                $post_content .= ', ' . $title;
+                $person_title .= ', ' . $title;
             }
 
             $card_content .= "<h6>{$modal_toggle}" . $person_title;

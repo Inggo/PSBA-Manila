@@ -1,1 +1,224 @@
-!function(t){var o={};function n(e){if(o[e])return o[e].exports;var a=o[e]={i:e,l:!1,exports:{}};return t[e].call(a.exports,a,a.exports,n),a.l=!0,a.exports}n.m=t,n.c=o,n.d=function(t,o,e){n.o(t,o)||Object.defineProperty(t,o,{configurable:!1,enumerable:!0,get:e})},n.n=function(t){var o=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(o,"a",o),o},n.o=function(t,o){return Object.prototype.hasOwnProperty.call(t,o)},n.p="",n(n.s=0)}([function(t,o,n){n(1),t.exports=n(2)},function(t,o){function n(){var t=document.createElement("script");t.src="//browser-update.org/update.min.js",document.body.appendChild(t)}try{document.addEventListener("DOMContentLoaded",n,!1)}catch(t){window.attachEvent("onload",n)}!function(t){var o,n,e=[];t(document).ready(function(){o=t(".pswp")[0],t('a[href$=".pdf"] > img').each(function(){t(this).parent().addClass("disable-ps")}),n=t("article:not(.excerpt) a:not(.disable-ps) > img"),t(n).each(function(){(new Image).src=t(this).parent().attr("href")}),t(window).on("load",function(){t(n).each(function(){var o=new Image,n=t(this).parent().attr("href");o.src=n;var a={src:n,w:o.width,h:o.height};t(this).parent().next().is("figcaption")&&(a.title=t(this).parent().next().text()),e.push(a)}),n.on("click",function(t){t.preventDefault(),new PhotoSwipe(o,PhotoSwipeUI_Default,e,{index:n.index(this)}).init()}),window.location.hash&&t('a[href="'+window.location.hash+'"]').tab("show");var a=null;t('a[href^="'+location.protocol+"//"+location.host+location.pathname+'"]').on("click",function(o){var n=t(this).attr("href").split("#")[1];if(n){var e="#"+n;0!==t('a[href="'+e+'"]').length&&(o.preventDefault(),t('a[href="'+e+'"]').tab("show"),a&&clearTimeout(a),a=setTimeout(function(){t("html, body").stop().animate({scrollTop:t(e).offset().top-10},400)},400))}}),t('[data-toggle="tooltip"]').tooltip(),t(window).on("scroll",function(){t(window).scrollTop()>100?t(".back-to-top").show("slow"):t(".back-to-top").hide("slow")}),t(".back-to-top").click(function(){t("html, body").stop().animate({scrollTop:0},400)}),t(window).scroll()})})}(jQuery)},function(t,o){}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 154);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 154:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(155);
+module.exports = __webpack_require__(156);
+
+
+/***/ }),
+
+/***/ 155:
+/***/ (function(module, exports) {
+
+var $buoop = { required: { e: -4, f: -3, o: -3, s: -1, c: -3 }, insecure: true, api: 2018.05 };
+function $buo_f() {
+    var e = document.createElement("script");
+    e.src = "//browser-update.org/update.min.js";
+    document.body.appendChild(e);
+};
+try {
+    document.addEventListener("DOMContentLoaded", $buo_f, false);
+} catch (e) {
+    window.attachEvent("onload", $buo_f);
+};
+
+// Photoswipe
+
+(function ($) {
+    var pswp;
+    var itemSources;
+    var items = [];
+
+    function getImageSize(img, callback) {
+        var $img = $(img);
+
+        var wait = setInterval(function () {
+            var w = $img[0].naturalWidth,
+                h = $img[0].naturalHeight;
+            if (w && h) {
+                clearInterval(wait);
+                callback.apply(this, [w, h]);
+            }
+        }, 30);
+    }
+
+    $(document).ready(function () {
+        pswp = $('.pswp')[0];
+
+        // Find all a > img
+        var aImg = $('a[href$=".pdf"] > img');
+
+        aImg.each(function () {
+            $(this).parent().addClass('disable-ps');
+        });
+
+        itemSources = $('article:not(.excerpt) a:not(.disable-ps) > img');
+
+        // Preload images
+        $(itemSources).each(function () {
+            var img = new Image();
+            img.src = $(this).parent().attr('href');
+        });
+
+        $(window).on('load', function () {
+            // Apply items on load
+            $(itemSources).each(function () {
+                var img = new Image();
+                var imgsrc = $(this).parent().attr('href');
+                img.src = imgsrc;
+
+                var item = {
+                    src: imgsrc,
+                    w: img.width,
+                    h: img.height
+                };
+
+                // Apply figcaption if present
+                if ($(this).parent().next().is('figcaption')) {
+                    item.title = $(this).parent().next().text();
+                }
+
+                items.push(item);
+            });
+
+            // Init gallery
+            itemSources.on('click', function (e) {
+                e.preventDefault();
+                var gallery = new PhotoSwipe(pswp, PhotoSwipeUI_Default, items, {
+                    index: itemSources.index(this)
+                });
+                gallery.init();
+            });
+
+            if (window.location.hash) {
+                $('a[href="' + window.location.hash + '"]').tab('show');
+            }
+
+            var scrollTo = null;
+
+            // Initial active page
+            $('a[href^="' + location.protocol + '\/\/' + location.host + location.pathname + '"]').on('click', function (e) {
+                var hash = $(this).attr('href').split('#')[1];
+
+                if (!hash) {
+                    return;
+                }
+
+                var id = '#' + hash;
+
+                if ($('a[href="' + id + '"]').length === 0) {
+                    return;
+                }
+
+                e.preventDefault();
+                $('a[href="' + id + '"]').tab('show');
+
+                if (scrollTo) {
+                    clearTimeout(scrollTo);
+                }
+
+                scrollTo = setTimeout(function () {
+                    $("html, body").stop().animate({
+                        scrollTop: $(id).offset().top - 10
+                    }, 400);
+                }, 400);
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > 100) {
+                    $('.back-to-top').show('slow');
+                } else {
+                    $('.back-to-top').hide('slow');
+                }
+            });
+
+            $('.back-to-top').click(function () {
+                $("html, body").stop().animate({
+                    scrollTop: 0
+                }, 400);
+            });
+
+            $(window).scroll();
+        });
+    });
+})(jQuery);
+
+/***/ }),
+
+/***/ 156:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ })
+
+/******/ });

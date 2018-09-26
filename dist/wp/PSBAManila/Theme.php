@@ -38,6 +38,8 @@ class Theme extends BaseTheme
         wp_register_style('google-webfonts-accent', 'https://fonts.googleapis.com/css?family=Nanum+Myeongjo&text=“”');
         wp_register_style('photoswipe-skin', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css', [], '4.1.2');
         wp_register_style('photoswipe', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css', ['photoswipe-skin'], '4.1.2');
+
+        wp_register_script('vuejs', 'https://cdn.jsdelivr.net/npm/vue');
     }
 
     public function enqueueStyles()
@@ -48,6 +50,7 @@ class Theme extends BaseTheme
     public function enqueueScripts()
     {
         wp_enqueue_script('photoswipe');
+        wp_enqueue_script('vuejs');
         wp_enqueue_script('main_js');
     }
 
