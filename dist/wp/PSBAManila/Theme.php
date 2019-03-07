@@ -39,7 +39,9 @@ class Theme extends BaseTheme
         wp_register_style('photoswipe-skin', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css', [], '4.1.2');
         wp_register_style('photoswipe', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css', ['photoswipe-skin'], '4.1.2');
 
-        wp_register_script('vuejs', 'https://cdn.jsdelivr.net/npm/vue');
+        wp_register_script('vuejs', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js');
+
+        wp_register_script('psba-manila-events_calendar', get_template_directory_uri() . '/events-calendar.js', ['vuejs'], $this->version, true);
     }
 
     public function enqueueStyles()
@@ -50,8 +52,9 @@ class Theme extends BaseTheme
     public function enqueueScripts()
     {
         wp_enqueue_script('photoswipe');
-        wp_enqueue_script('vuejs');
         wp_enqueue_script('main_js');
+
+        wp_enqueue_script('psba-manila-events_calendar');
     }
 
     protected function addImageSizes()

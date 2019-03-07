@@ -113,6 +113,14 @@ class Proceedings extends AbstractCPT
         ]);
 
         $cmb->add_field([
+            'name' => 'Abstracts',
+            'id'   => 'abstracts',
+            'type' => 'wysiwyg',
+            'options' => array(),
+            'default' => '',
+        ]);
+
+        $cmb->add_field([
             'name' => 'Proceedings',
             'id'   => 'proceedings',
             'type' => 'wysiwyg',
@@ -173,6 +181,7 @@ class Proceedings extends AbstractCPT
         $post->post_content = get_post_meta($post_id, 'concept_note', true);
         $post->post_content .= "\n\n" . get_post_meta($post_id, 'speaker_profiles', true);
         $post->post_content .= "\n\n" . get_post_meta($post_id, 'program_of_activities', true);
+        $post->post_content .= "\n\n" . get_post_meta($post_id, 'abstracts', true);
         $post->post_content .= "\n\n" . get_post_meta($post_id, 'proceedings', true);
         $post->post_content .= "\n\n" . get_post_meta($post_id, 'location', true);
 

@@ -50,7 +50,13 @@ $tabs = [
         </div>
         <div class="col-md-4">
             <div id="events-calendar">
-                <full-calendar :events="events"></full-calendar>
+                <full-calendar
+                    :events="events"
+                    default-view="month"
+                    :editable="false"
+                    :selectable="false"
+                    theme-system="bootstrap4"
+                ></full-calendar>
             </div>
         </div>
     </div>

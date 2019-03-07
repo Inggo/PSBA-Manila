@@ -6,6 +6,7 @@ $fields = [
     'concept_note' => 'Concept Note',
     'speaker_profiles' => 'Speaker Profiles',
     'program_of_activities' => 'Program of Activities',
+    'abstracts' => 'Abstracts',
     'proceedings' => 'Proceedings',
     'location' => 'Venue Map / Location',
     'gallery' => 'Gallery',

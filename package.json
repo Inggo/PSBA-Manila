@@ -9,7 +9,10 @@
     "devDependencies": {
         "babel-preset-stage-2": "^6.24.1",
         "bootstrap": "^4.1.1",
-        "laravel-mix": "^2.1.14",
-        "vue": "^2.5.17"
+        "laravel-mix": "^4.0.0",
+        "sass": "^1.17.2",
+        "sass-loader": "^7.1.0",
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.7"
     }
 }
