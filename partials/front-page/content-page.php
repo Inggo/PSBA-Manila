@@ -11,7 +11,7 @@ $tabs = [
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="front-page-tabs">
                 <ul class="nav nav-tabs justify-content-center" role="tablist">
                     <?php $index = 0; foreach ($tabs as $tab => $label): ?>
@@ -48,6 +48,7 @@ $tabs = [
                 </div>
             </div>
         </div>
+        <?php /** Events calendar --next release
         <div class="col-md-4">
             <div id="events-calendar">
                 <full-calendar
@@ -59,6 +60,7 @@ $tabs = [
                 ></full-calendar>
             </div>
         </div>
+        */ ?>
     </div>
 </div>
 <?php
