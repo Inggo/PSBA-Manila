@@ -241,6 +241,7 @@ trait ContentOverrides
 
         $undergrad_content = "";
         $graduate_content = "";
+        $adjunct_local_content = "";
         $adjunct_content = "";
         $shs_content = "";
 
@@ -289,6 +290,10 @@ trait ContentOverrides
                 $undergrad_content .= $card_content;
             }
 
+            if (has_term('adjunct-local', 'post_tag', $person)) {
+                $adjunct_local_content .= $card_content;
+            }
+
             if (has_term('adjunct', 'post_tag', $person)) {
                 $adjunct_content .= $card_content;
             }
@@ -312,6 +317,13 @@ trait ContentOverrides
                 "<h4 class='col col-12'>Graduate Program Faculty</h4>" .
                 $graduate_content . "</div>";
             $valid_contents[] = $graduate_content;
+        }
+
+        if ($adjunct_local_content != "") {
+            $adjunct_local_content = "<div class='row faculty faculty-adjunct'>" .
+                "<h4 class='col col-12'>Adjunct Foreign Professors</h4>" .
+                $adjunct_local_content . "</div>";
+            $valid_contents[] = $adjunct_local_content;
         }
 
         if ($adjunct_content != "") {

@@ -23,6 +23,11 @@ img {
     height: auto;
     z-index: 10;
     position: relative;
+
+    .aligncenter {
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 $a-color: $accent-bg;
