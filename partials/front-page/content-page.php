@@ -11,7 +11,7 @@ $tabs = [
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="front-page-tabs">
                 <ul class="nav nav-tabs justify-content-center" role="tablist">
                     <?php $index = 0; foreach ($tabs as $tab => $label): ?>
@@ -48,19 +48,11 @@ $tabs = [
                 </div>
             </div>
         </div>
-        <?php /** Events calendar --next release
-        <div class="col-md-4">
-            <div id="events-calendar">
-                <full-calendar
-                    :events="events"
-                    default-view="month"
-                    :editable="false"
-                    :selectable="false"
-                    theme-system="bootstrap4"
-                ></full-calendar>
+        <div class="col-md-3">
+            <div class="events-calendar-container">
+                <div id="events-calendar"></div>
             </div>
         </div>
-        */ ?>
     </div>
 </div>
 <?php
@@ -74,12 +66,23 @@ $event_posts = get_posts([
 $events = [];
 
 foreach ($event_posts as $post) {
-    $events[] = [
+    $event = [
+        'id' => $post->ID,
         'title' => $post->post_title,
         'start' => $post->start_date,
         'end' => $post->end_date,
-        'color' => $post->event_color
+        'color' => $post->event_color,
+        'extendedProps' => [
+            'details' => $post->event_details
+        ],
+        'allDay' => true
     ];
+
+    if ($post->event_link) {
+        $event['url'] = $post->event_link;
+    }
+
+    $events[] = $event;
 }
 
 ?>

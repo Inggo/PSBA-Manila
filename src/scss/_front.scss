@@ -1,3 +1,7 @@
+@import "../../node_modules/@fullcalendar/core/main.css";
+@import "../../node_modules/@fullcalendar/daygrid/main.css";
+@import "../../node_modules/@fullcalendar/bootstrap/main.css";
+
 .front-page-banners {
     max-width: 1600px;
     margin: 0 auto;
@@ -117,4 +121,22 @@
         max-height: 70px;
         width: auto;
     }
+}
+
+// Events Calendar Override
+.events-calendar-container {
+    padding: 15px;
+}
+
+.fc-toolbar h2 {
+    font-size: 1rem;
+}
+
+.event-popover i.event-tag {
+    border-radius: 50%;
+    width: .6667rem;
+    height: .6667rem;
+
+    display: inline-block;
+    content: "";
 }

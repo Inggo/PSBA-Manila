@@ -320,8 +320,8 @@ trait ContentOverrides
         }
 
         if ($adjunct_local_content != "") {
-            $adjunct_local_content = "<div class='row faculty faculty-adjunct'>" .
-                "<h4 class='col col-12'>Adjunct Foreign Professors</h4>" .
+            $adjunct_local_content = "<div class='row faculty faculty-adjunct-local'>" .
+                "<h4 class='col col-12'>Adjunct Local Professors</h4>" .
                 $adjunct_local_content . "</div>";
             $valid_contents[] = $adjunct_local_content;
         }

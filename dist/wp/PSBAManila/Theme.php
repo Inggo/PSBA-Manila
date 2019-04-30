@@ -38,15 +38,14 @@ class Theme extends BaseTheme
         wp_register_style('google-webfonts-accent', 'https://fonts.googleapis.com/css?family=Nanum+Myeongjo&text=“”');
         wp_register_style('photoswipe-skin', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css', [], '4.1.2');
         wp_register_style('photoswipe', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css', ['photoswipe-skin'], '4.1.2');
+        wp_register_style('font-awesome', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css', [], '5.8.1');
 
-        wp_register_script('vuejs', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js');
-
-        wp_register_script('psba-manila-events_calendar', get_template_directory_uri() . '/events-calendar.js', ['vuejs'], $this->version, true);
+        wp_register_script('psba-manila-events_calendar', get_template_directory_uri() . '/events-calendar.js', ['bootstrap_js'], $this->version, true);
     }
 
     public function enqueueStyles()
     {
-        wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', ['google-webfonts', 'google-webfonts-accent', 'bootstrap_css', 'photoswipe'], $this->version);
+        wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', ['google-webfonts', 'google-webfonts-accent', 'bootstrap_css', 'photoswipe', 'font-awesome'], $this->version);
     }
 
     public function enqueueScripts()

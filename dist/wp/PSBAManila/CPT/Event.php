@@ -36,11 +36,12 @@ class Event extends AbstractCPT
             'items_list_navigation' => __( 'Events list navigation', $this->slug ),
             'filter_items_list'     => __( 'Filter events list', $this->slug ),
         );
+
         $args = array(
             'label'                 => __( 'Event', $this->slug ),
             'labels'                => $labels,
             'supports'              => array('title', 'revisions', 'page-attributes'),
-            'taxonomies'            => array(),
+            'taxonomies'            => array('post_tag'),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -63,8 +64,6 @@ class Event extends AbstractCPT
         add_filter('manage_event_posts_custom_column', [$this, 'applyColumnContents'], 10, 2);
 
         add_filter('cmb2_admin_init', [$this, 'addMetaBoxes'], 15);
-
-        add_action('save_post', [$this, 'applyContents'], 20, 3);
     }
 
     public function applyColumns($posts_columns)
@@ -90,6 +89,10 @@ class Event extends AbstractCPT
             echo get_post_meta($post_ID, 'event_color', true);
         }
 
+        if ($column_name === 'event_link') {
+            echo get_post_meta($post_ID, 'event_link', true);
+        }
+
         if ($column_name === 'start_date') {
             echo get_post_meta($post_ID, 'start_date', true);
         }
@@ -103,13 +106,12 @@ class Event extends AbstractCPT
     {
         $cmb = new_cmb2_box([
             'id'            => 'event_details_metabox',
-            'title'         => __('Courses'),
+            'title'         => __('Event Details'),
             'object_types'  => ['event'],
             'context'       => 'normal',
             'priority'      => 'high',
             'show_names'    => true
         ]);
-
 
         $cmb->add_field([
             'name' => 'Start Date',
@@ -117,6 +119,7 @@ class Event extends AbstractCPT
             'type' => 'text_date',
             'options' => array(),
             'default' => '',
+            'date_format' => 'Y-m-d'
         ]);
 
         $cmb->add_field([
@@ -125,7 +128,14 @@ class Event extends AbstractCPT
             'type' => 'text_date',
             'options' => array(),
             'default' => '',
+            'date_format' => 'Y-m-d'
         ]);
+
+        $cmb->add_field( array(
+            'name' => 'Details',
+            'id' => 'event_details',
+            'type' => 'textarea'
+        ) );
 
         $cmb->add_field([
             'name' => 'Event Color',
@@ -134,108 +144,13 @@ class Event extends AbstractCPT
             'options' => array(),
             'default' => '',
         ]);
-    }
 
-    public function applyContents($post_id, $post, $update)
-    {
-        $post_type = get_post_type($post_id);
-
-        if ($post_type != 'event') {
-            return;
-        }
-
-        $post->post_content = '<table class="table event-table table-light table-striped"><tbody>';
-
-        // Get rows
-        $curr_rows = get_post_meta($post_id, 'event_rows', true);
-
-        if ($curr_rows) {
-            foreach ($curr_rows as $index => $row) {
-                $post->post_content .= $this->applyRowContents($row, $index);
-            }    
-        }
-
-        $post->post_content .= '</tbody></table>';
-
-        $post->post_content .= get_post_meta($post_id, 'additional_remarks', true);
-
-        $requirements_title = get_post_meta($post_id, 'requirements_title', true);
-        $requirements_content = get_post_meta($post_id, 'requirements_content', true);
-
-        if ($requirements_title || $requirements_content) {
-            $post->post_content .= '<div class="card">';
-
-            if ($requirements_title) {
-                $post->post_content .= '<div class="card-header"><h4>' . $requirements_title . '</h4></div>';
-            }
-
-            if ($requirements_content) {
-                $post->post_content .= '<div class="card-body">' . $requirements_content . '</div>';
-            }
-
-            $post->post_content .= '</div>';
-        }
-
-        remove_action('save_post', [$this, 'applyContents'], 20);
-
-        wp_update_post($post);
-
-        add_action('save_post', [$this, 'applyContents'], 20, 3);
-    }
-
-    private function applyRowContents($row, $index)
-    {
-        $type = $row['row_type'];
-
-        $content = "<tr class='row-" . $type . "'>";
-
-        switch ($type) {
-            case 'header':
-            case 'subtotal':
-            case 'total':
-                $content .= "<td colspan='2'>";
-                $content .= $row['code'] . ' ' . $row['title'];
-                $content .= "</td>";
-                break;
-            case 'normal':
-            default:
-                $content .= "<td>" . $row['code'] . "</td>";
-                $content .= "<td class='text-center'><div><a href='#course-description-" . $index;
-                $content .= "' data-toggle='modal'>" . $row['title'] . "</a></div>";
-                if ($row['description']) {
-                    $content .= $this->applyCourseDescriptionContents($row['title'], $row['description'], $index);
-                }
-                $content .= "</td>";
-                break;
-        }
-
-        $content .= "<td>" . $row['units'] . "</td>";
-
-        $content .= "</tr>";
-
-        return $content;
-    }
-
-    private function applyCourseDescriptionContents($title, $description, $index)
-    {
-        $id = 'course-description-' . $index;
-
-        $content = '<div class="modal fade" id="' . $id;
-        $content .= '" tabindex="-1" role="dialog" aria-labelledby="';
-        $content .= $id . '" aria-hidden="true">';
-
-        $content .= '<div class="modal-dialog modal-dialog-centered" role="document">';
-        $content .= '<div class="modal-content">';
-        $content .= '<div class="modal-header">';
-        $content .= '<h5 class="modal-title">' . $title . '</h5>';
-        $content .= '<div><button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-        $content .= '<span aria-hidden="true">&times;</span>';
-        $content .= '</button></div>';
-        $content .= '</div>';
-        $content .= '<div class="modal-body text-justify">';
-        $content .= $description;
-        $content .= '</div></div></div></div>';
-
-        return $content;
+        $cmb->add_field([
+            'name' => 'Event Link',
+            'id'   => 'event_link',
+            'type' => 'text_url',
+            'options' => array(),
+            'default' => '',
+        ]);
     }
 }
