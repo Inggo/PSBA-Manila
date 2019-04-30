@@ -4,7 +4,7 @@ Theme URI: http://dev.nyo.me/wp/psba-manila/
 Author: Inggo Espinosa
 Author URI: http://inggo.xyz/
 Description: Custom WordPress Theme for PSBA-Manila.
-Version: 1.2.1
+Version: 1.3.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: psba-manila
@@ -25,3 +25,21 @@ Text Domain: psba-manila
 @import "portal";
 @import "curriculum";
 @import "proceedings";
+
+// Events Calendar Override
+.events-calendar-container {
+    padding: 15px;
+}
+
+.fc-toolbar h2 {
+    font-size: 1rem;
+}
+
+.event-popover i.event-tag {
+    border-radius: 50%;
+    width: .6667rem;
+    height: .6667rem;
+
+    display: inline-block;
+    content: "";
+}
