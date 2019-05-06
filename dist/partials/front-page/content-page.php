@@ -72,10 +72,7 @@ foreach ($event_posts as $post) {
         'start' => $post->start_date,
         'end' => $post->end_date,
         'color' => $post->event_color,
-        'extendedProps' => [
-            'details' => $post->event_details
-        ],
-        'allDay' => true
+        'details' => $post->event_details
     ];
 
     if ($post->event_link) {

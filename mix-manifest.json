@@ -15,6 +15,7 @@
     "/dist/top.php": "/dist/top.php",
     "/dist/style.css": "/dist/style.css",
     "/dist/script.js": "/dist/script.js",
+    "/dist/events-calendar.js": "/dist/events-calendar.js",
     "/dist/screenshot.png": "/dist/screenshot.png",
     "/dist/README.md": "/dist/README.md"
 }

@@ -9,6 +9,7 @@ if (mix.inProduction()) {
     mix.copy('./*.php', './dist', false)
         .copy('./style.css', './dist', false)
         .copy('./script.js', './dist', false)
+        .copy('./events-calendar.js', './dist', false)
         .copy('./screenshot.png', './dist', false)
         .copy('./images/', './dist/images', false)
         .copy('./wp/', './dist/wp', false)

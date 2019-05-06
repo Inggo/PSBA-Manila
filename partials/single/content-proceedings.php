@@ -74,12 +74,12 @@ function print_proceedings_gallery($gallery)
                 <?php foreach ($contents as $field => $content): ?>
                 <a class="list-group-item
                     <?= $field == $first_tab ? 'active' : '' ?>"
-                    id="<?= $post->post_name . '-' . $field ?>-tab"
+                    id="event-<?= $field ?>-tab"
                     data-toggle="tab"
-                    href="#<?= $post->post_name . '-' . $field ?>"
+                    href="#event-<?= $field ?>"
                     role="tab"
-                    aria-controls="<?= $post->post_name ?>-tab-contents"
-                    aria-selected="<?= $post->post_name . '-' . $field ?>"
+                    aria-controls="event-tab-contents"
+                    aria-selected="event-<?= $field ?>"
                 >
                     <?= $fields[$field]; ?>
                 </a>
@@ -88,11 +88,9 @@ function print_proceedings_gallery($gallery)
             </div>
         </div>
         <div class="col-md-9">
-            <div class="tab-content" id="<?= $post->post_name ?>-tab-contents">
+            <div class="tab-content" id="event-tab-contents">
                 <?php foreach ($contents as $field => $content): ?>
-                <div class="tab-pane fade
-                    <?= $field == $first_tab ? 'active show' : '' ?>"
-                    " id="<?= $post->post_name . '-' . $field ?>">
+                <div class="tab-pane fade <?= $field == $first_tab ? 'active show' : '' ?>" id="event-<?= $field ?>">
                     <article class="card">
                         <h3 class="card-header"><?= $fields[$field]; ?></h3>
                         <div class="card-body">
