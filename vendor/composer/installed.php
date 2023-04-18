@@ -1,0 +1,71 @@
+<?php return array(
+    'root' => array(
+        'name' => 'inggo/psba-manila',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'a1435fc192026f6ba151828d96bc293a1bbfe990',
+        'type' => 'wordpress-theme',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'cmb2/cmb2' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '7bce941075f24fe4d991434014c4b860fec62f3d',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../wp-content/plugins/cmb2',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'composer/installers' => array(
+            'pretty_version' => 'v1.12.0',
+            'version' => '1.12.0.0',
+            'reference' => 'd20a64ed3c94748397ff5973488761b22f6d3f19',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/./installers',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'inggo/psba-manila' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'a1435fc192026f6ba151828d96bc293a1bbfe990',
+            'type' => 'wordpress-theme',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'roundcube/plugin-installer' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
+        'shama/baton' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
+        'wp-bootstrap/wp-bootstrap-navwalker' => array(
+            'pretty_version' => 'v4.3.0',
+            'version' => '4.3.0.0',
+            'reference' => '5d39044bcee8703d1402f7371b033c460b2e0a71',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wp-bootstrap/wp-bootstrap-navwalker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wpupdatephp/wp-update-php' => array(
+            'pretty_version' => '1.1.1',
+            'version' => '1.1.1.0',
+            'reference' => '6c80444de04d8c688e3b42e164e40527b487a357',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wpupdatephp/wp-update-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

@@ -3,7 +3,7 @@
 namespace Inggo\WordPress;
 
 use Inggo\WordPress\Contracts\Customizer;
-use Inggo\WordPress\ThemeCustomizeHelper;
+use Inggo\WordPress\Helpers\ThemeCustomizeHelper;
 
 use WP_Customize_Manager;
 
@@ -24,7 +24,7 @@ class ThemeCustomizer implements Customizer
     public function __construct($slug = 'theme')
     {
         $this->slug = $slug;
-        $this->ch = new ThemeCustomizerHelper($slug);
+        $this->ch = new Helpers\ThemeCustomizerHelper($slug);
     }
 
     /**

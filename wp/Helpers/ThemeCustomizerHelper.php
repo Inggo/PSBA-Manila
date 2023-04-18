@@ -1,6 +1,6 @@
 <?php
 
-namespace Inggo\WordPress;
+namespace Inggo\WordPress\Helpers;
 
 use WP_Customize_Manager;
 use WP_Customize_Control;

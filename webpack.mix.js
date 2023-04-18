@@ -2,19 +2,22 @@ let mix = require('laravel-mix');
 
 mix.js('src/js/script.js', '.')
     .js('src/js/events-calendar.js', '.')
-    .sass('src/scss/style.scss', '.')
-    .options({processCssUrls: false});
+    .sass('src/scss/style.scss', '.').options({
+        processCssUrls: false
+    });
+
+mix.copy('./wp-content/plugins/cmb2', './vendor/cmb2/cmb2');
 
 if (mix.inProduction()) {
-    mix.copy('./*.php', './dist', false)
-        .copy('./style.css', './dist', false)
-        .copy('./script.js', './dist', false)
-        .copy('./events-calendar.js', './dist', false)
-        .copy('./screenshot.png', './dist', false)
-        .copy('./images/', './dist/images', false)
-        .copy('./wp/', './dist/wp', false)
-        .copy('./vendor/', './dist/vendor', false)
-        .copy('./partials/', './dist/partials', false)
-        .copy('./templates/', './dist/templates', false)
-        .copy('./*.md', './dist', false);
+    mix.copy('./*.php', './dist')
+        .copy('./style.css', './dist')
+        .copy('./script.js', './dist')
+        .copy('./events-calendar.js', './dist')
+        .copy('./screenshot.png', './dist')
+        .copy('./images/', './dist/images')
+        .copy('./wp/', './dist/wp')
+        .copy('./vendor/', './dist/vendor')
+        .copy('./partials/', './dist/partials')
+        .copy('./templates/', './dist/templates')
+        .copy('./*.md', './dist');
 }
