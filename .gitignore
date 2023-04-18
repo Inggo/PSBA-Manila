@@ -3,3 +3,4 @@
 /.vscode
 /dist/*.zip
 deploy.sh
+lastdeploy.log
