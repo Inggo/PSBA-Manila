@@ -2,5 +2,6 @@
 /vendor/**/.*
 /.vscode
 /dist/*.zip
+/wp-content/
 deploy.sh
 lastdeploy.log
