@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 d-flex">
           <?php get_template_part('partials/nav', 'site'); ?>
         </div>
       </div>
