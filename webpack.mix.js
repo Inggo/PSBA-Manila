@@ -6,9 +6,9 @@ mix.js('src/js/script.js', '.')
         processCssUrls: false
     });
 
-mix.copy('./wp-content/plugins/cmb2', './vendor/cmb2/cmb2');
-
 if (mix.inProduction()) {
+    mix.copy('./wp-content/plugins/cmb2', './vendor/cmb2/cmb2');
+
     mix.copy('./*.php', './dist')
         .copy('./style.css', './dist')
         .copy('./script.js', './dist')

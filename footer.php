@@ -18,10 +18,11 @@
     </section>
 </footer>
 <?php get_template_part('partials/pswp'); ?>
-<a class="back-to-top" href="javascript:;">
-    <span class="btt-caret">^</span>
-</a>
 <?php
+// <a class="back-to-top" href="javascript:;">
+//     <span class="btt-caret">^</span>
+// </a>
+// <?php
 wp_footer();
 ?>
 <div id="outdated"></div>

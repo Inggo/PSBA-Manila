@@ -8,3 +8,4 @@ For production use, make sure to delete `node_modules` and any `.git` directory 
 
 ## Plugin Requirements
 
+This requires CMB2/CMB2. Place it on this folder's wp-content/plugins if it is not included in your plugins for development.

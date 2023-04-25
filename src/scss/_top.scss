@@ -9,7 +9,8 @@
 }
 
 .site-header--main {
-    padding: 10px 0;
+    padding: 10px;
+    max-width: 1600px;
 }
 
 .tagline {
@@ -26,13 +27,13 @@
 }
 
 .site-logo {
-    max-width: 140px;
-    animation: rotate 240s infinite linear;
+    width: 100%;
+    height: auto;
+    // animation: rotate 240s infinite linear;
 }
 
 .site-title {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .search-form {

@@ -14,7 +14,6 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "wpupdatephp/wp-update-php": "^1.1",
-        "wp-bootstrap/wp-bootstrap-navwalker": "^4.1",
         "cmb2/cmb2": "dev-master"
     },
     "autoload": {
@@ -22,8 +21,7 @@
             "Inggo\\WordPress\\": "wp/"
         },
         "files": [
-            "vendor/cmb2/cmb2/init.php",
-            "vendor/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php"
+            "vendor/cmb2/cmb2/init.php"
         ]
     },
     "config": {

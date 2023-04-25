@@ -26,33 +26,34 @@
       </div>
     </div>
   </section>
-  <section class="site-header--main">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <?php if (get_option('header_logo')) : ?>
-          <div class="site-logo ml-auto mr-auto">
-            <a href="/" class="a-img">
-              <img src="<?= get_option('header_logo'); ?>" alt="<?php bloginfo('name'); ?>">
-            </a>
+  <section class="site-header--main mx-auto">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="row no-gutters">
+            <?php if (get_option('header_logo')) : ?>
+            <div class="site-logo pr-3 col-sm-2">
+              <a href="/" class="a-img">
+                <img src="<?= get_option('header_logo'); ?>" alt="<?php bloginfo('name'); ?>">
+              </a>
+            </div>
+            <?php endif; ?>
+            <div class="col-sm-10 d-flex">
+              <h1 class="site-title text-center align-self-center">
+                <?php if (get_option('header_title')) : ?>
+                  <?= (get_option('header_title')) ?>
+                <?php else : ?>
+                  <?php bloginfo('name'); ?>
+                <?php endif; ?>
+              </h1>
+            </div>
           </div>
-          <?php endif; ?>
         </div>
-        <div class="col-md-10">
-          <h1 class="site-title text-center">
-            <?php if (get_option('header_title')) : ?>
-              <?= (get_option('header_title')) ?>
-            <?php else : ?>
-              <?php bloginfo('name'); ?>
-            <?php endif; ?></h1>
+        <div class="col-lg-8">
+          <?php get_template_part('partials/nav', 'site'); ?>
         </div>
       </div>
     </div>
   </section>
 </header>
-<?php
-
-get_template_part('partials/nav', 'site');
-
-?>
 <main class="clearfix">
