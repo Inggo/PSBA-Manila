@@ -46,24 +46,47 @@ Text Domain: psba-manila
 
 // Nav Menu fixes
 #menu-top-menu {
+    font-size: 1.1rem;
+
+    > li {
+        padding-right: 1rem;
+        &:last-child {
+            padding-right: 0;
+        }
+    }
 
     ul, li {
         list-style: none;
     }
 
-    .sub-menu .sub-menu {
-        display: none;
-        padding-left: .2rem;
+    .sub-menu-toggle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
     }
 
-    .sub-menu .menu-item-has-children.active-sub-menu > .sub-menu {
+    .sub-menu > li {
+        position: relative;
+
+        &.menu-item-has-children {
+            padding-left: 28px;
+        }
+    }
+
+    .sub-menu .sub-menu {
+        display: none;
+        font-size: .9em;
+        padding-left: 0;
+    }
+
+    .sub-menu .menu-item-has-children.active > .sub-menu {
         display: block;
     }
     
     a {
         text-transform: uppercase;
         color: $accent-color;
-        font-size: 1.1rem;
         font-weight: bold;
         display: block;
         padding: 0.6rem;
@@ -101,7 +124,11 @@ Text Domain: psba-manila
 
             > li {
                 padding: 0;
-                margin: 0;
+                margin: 0 0 2px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
 
@@ -114,4 +141,10 @@ Text Domain: psba-manila
             right: 0;
         }
     }
+}
+
+.sub-menu-toggle:focus,
+.sub-menu-toggle:active {
+    box-shadow:none !important;
+    outline:0px !important;
 }
