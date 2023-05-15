@@ -87,14 +87,13 @@ Text Domain: psba-manila
     }
     
     a {
-        text-transform: uppercase;
         color: $accent-color;
         font-weight: bold;
         display: block;
         padding: 0.6rem;
         white-space: nowrap;
     }
-    
+
     :hover > a {
         background-color: $accent-bg;
     }
@@ -102,6 +101,10 @@ Text Domain: psba-manila
     > li {
         position: relative;
         z-index: 990;
+
+        > a {
+            text-transform: uppercase;
+        }
 
         a:hover {
             text-decoration: none;
