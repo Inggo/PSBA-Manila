@@ -11,7 +11,6 @@ if (mix.inProduction()) {
     mix.copy('./*.php', './dist')
         .copy('./style.css', './dist')
         .copy('./script.js', './dist')
-        .copy('./events-calendar.js', './dist')
         .copy('./screenshot.png', './dist')
         .copy('./images/', './dist/images')
         .copy('./wp/', './dist/wp')
