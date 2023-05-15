@@ -73,15 +73,6 @@ class Theme extends BaseTheme
         ]);
 
         register_sidebar([
-            'id' => 'footer-center',
-            'name' => 'Footer Widgets - Center',
-            'before_widget' => '<div class="footer-widget footer-widget--center">',
-            'after_widget' => '</div>',
-            'before_title' => '<h3>',
-            'after_title' => '</h3>',
-        ]);
-
-        register_sidebar([
             'id' => 'footer-right',
             'name' => 'Footer Widgets - Right',
             'before_widget' => '<div class="footer-widget footer-widget--right">',

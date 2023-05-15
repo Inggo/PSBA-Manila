@@ -2,13 +2,10 @@
 <footer class="site-footer">
     <section class="container">
         <div class="row">
-            <div class="col-md-4 footer-widgets">
+            <div class="col-md-6 footer-widgets">
                 <?php dynamic_sidebar("Footer Widgets - Left"); ?>
             </div>
-            <div class="col-md-4 footer-widgets">
-                <?php dynamic_sidebar("Footer Widgets - Center"); ?>
-            </div>
-            <div class="col-md-4 footer-widgets">
+            <div class="col-md-6 footer-widgets">
                 <?php dynamic_sidebar("Footer Widgets - Right"); ?>
             </div>
         </div>

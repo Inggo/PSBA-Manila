@@ -39,27 +39,17 @@ class Theme extends BaseTheme
         wp_register_style('photoswipe-skin', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css', [], '4.1.2');
         wp_register_style('photoswipe', 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css', ['photoswipe-skin'], '4.1.2');
         wp_register_style('font-awesome', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css', [], '5.8.1');
-        wp_register_style('fullcalendar-main', 'https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css', ['font-awesome'], '4.1.0');
-        wp_register_style('fullcalendar-daygrid', 'https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css', ['fullcalendar-main'], '4.1.0');
-        wp_register_style('fullcalendar-bootstrap', 'https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@4.1.0/main.min.css', ['fullcalendar-daygrid'], '4.1.0');
-
-        wp_register_script('psba-manila-events_calendar', get_template_directory_uri() . '/events-calendar.js', ['bootstrap_js'], $this->version, true);
     }
 
     public function enqueueStyles()
     {
         wp_enqueue_style('main_css', get_template_directory_uri() . '/style.css', ['google-webfonts', 'google-webfonts-accent', 'bootstrap_css', 'photoswipe'], $this->version);
-        if (is_front_page()) {
-            wp_enqueue_style('fullcalendar-main');
-        }
     }
 
     public function enqueueScripts()
     {
         wp_enqueue_script('photoswipe');
         wp_enqueue_script('main_js');
-
-        wp_enqueue_script('psba-manila-events_calendar');
     }
 
     protected function addImageSizes()
