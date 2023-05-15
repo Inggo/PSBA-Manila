@@ -46,6 +46,18 @@ Text Domain: psba-manila
 
 // Nav Menu fixes
 #menu-top-menu {
+
+    ul, li {
+        list-style: none;
+    }
+
+    .sub-menu .sub-menu {
+        display: none;
+    }
+
+    .sub-menu :hover > .sub-menu {
+        display: block;
+    }
     
     a {
         text-transform: uppercase;
@@ -79,7 +91,6 @@ Text Domain: psba-manila
 
         > .sub-menu {
             background-color: $gray-900;
-            list-style: none;
             display: none;
             position: absolute;
             left: 0;
