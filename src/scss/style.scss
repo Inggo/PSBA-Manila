@@ -53,6 +53,7 @@ Text Domain: psba-manila
 
     .sub-menu .sub-menu {
         display: none;
+        padding-left: 1rem;
     }
 
     .sub-menu :hover > .sub-menu {
@@ -82,7 +83,7 @@ Text Domain: psba-manila
         }
 
         &.current-menu-item > a {
-            background-color: $gray-600;
+            background-color: $blue-600;
         }
 
         &:hover > a {
