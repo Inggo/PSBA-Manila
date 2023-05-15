@@ -119,29 +119,12 @@
     }
 }
 
-// Events Calendar Override
-.events-calendar-container {
-    padding: 15px;
-
-    .fc-toolbar h2 {
-        font-size: 1rem;
+#front-page-contents {
+    .wp-block-buttons {
+        display: flex;
+    
+        > .wp-block-button {
+            margin: 0 auto;
+        }
     }
-
-    .fc-event {
-        color: #fff;
-    }
-}
-
-.event-popover i.event-tag {
-    border-radius: 50%;
-    width: .6667rem;
-    height: .6667rem;
-
-    display: inline-block;
-    content: "";
-}
-
-
-.wp-block-buttons > .wp-block-button {
-    margin: 0 auto;
 }
