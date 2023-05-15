@@ -69,7 +69,10 @@ Text Domain: psba-manila
             text-decoration: none;
         }
 
-        &.current-menu-item > a,
+        &.current-menu-item > a {
+            background-color: $gray-600;
+        }
+
         &:hover > a {
             background-color: $gray-900;
         }
