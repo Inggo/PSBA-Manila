@@ -46,21 +46,27 @@ Text Domain: psba-manila
 
 // Nav Menu fixes
 #menu-top-menu {
+    
+    a {
+        text-transform: uppercase;
+        color: $accent-color;
+        font-size: 1.1rem;
+        font-weight: bold;
+        display: block;
+        padding: 0.6rem;
+        white-space: nowrap;
+    }
+    
+    &:hover > a {
+        background-color: $accent-bg;
+    }
+    
     > li {
         position: relative;
         z-index: 990;
 
         a:hover {
             text-decoration: none;
-        }
-
-        > a {
-            padding: 0.6rem;
-            text-transform: uppercase;
-            color: $accent-color;
-            font-size: 1.1rem;
-            font-weight: bold;
-            display: block;
         }
 
         &.current-menu-item > a,
@@ -81,19 +87,6 @@ Text Domain: psba-manila
             > li {
                 padding: 0;
                 margin: 0;
-
-                > a {
-                    padding: 0.6rem;
-                    color: $accent-color;
-                    font-size: 1rem;
-                    font-weight: bold;
-                    display: block;
-                    white-space: nowrap;
-                }
-
-                &:hover > a {
-                    background-color: $accent-bg;
-                }
             }
         }
 
