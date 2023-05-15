@@ -9,6 +9,9 @@ $tabs = [
 ];
 
 ?>
+<div class="container-fluid p-0" id="front-page-contents">
+    <?php echo $post->post_content; ?>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
