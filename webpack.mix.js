@@ -1,7 +1,6 @@
 let mix = require('laravel-mix');
 
 mix.js('src/js/script.js', '.')
-    .js('src/js/events-calendar.js', '.')
     .sass('src/scss/style.scss', '.').options({
         processCssUrls: false
     });

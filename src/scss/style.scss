@@ -57,7 +57,7 @@ Text Domain: psba-manila
         white-space: nowrap;
     }
     
-    &:hover > a {
+    :hover > a {
         background-color: $accent-bg;
     }
     
