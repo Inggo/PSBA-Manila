@@ -11,7 +11,7 @@ $tabs = [
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="front-page-tabs">
                 <ul class="nav nav-tabs justify-content-center" role="tablist">
                     <?php $index = 0; foreach ($tabs as $tab => $label): ?>
@@ -48,41 +48,5 @@ $tabs = [
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="events-calendar-container">
-                <div id="events-calendar"></div>
-            </div>
-        </div>
     </div>
 </div>
-<?php
-// Isolate to own page
-$event_posts = get_posts([
-    'post_type' => 'event',
-    'posts_per_page' => -1,
-    'post_status' => 'publish'
-]);
-
-$events = [];
-
-foreach ($event_posts as $post) {
-    $event = [
-        'id' => $post->ID,
-        'title' => $post->post_title,
-        'start' => $post->start_date,
-        'end' => $post->end_date,
-        'color' => $post->event_color,
-        'details' => $post->event_details
-    ];
-
-    if ($post->event_link) {
-        $event['url'] = $post->event_link;
-    }
-
-    $events[] = $event;
-}
-
-?>
-<script>
-window.calendar_events = <?php echo json_encode($events); ?>
-</script>
