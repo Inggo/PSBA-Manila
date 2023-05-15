@@ -53,10 +53,10 @@ Text Domain: psba-manila
 
     .sub-menu .sub-menu {
         display: none;
-        padding-left: 1rem;
+        padding-left: .2rem;
     }
 
-    .sub-menu :hover > .sub-menu {
+    .sub-menu .menu-item-has-children.active-sub-menu > .sub-menu {
         display: block;
     }
     
