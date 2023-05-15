@@ -125,6 +125,12 @@
     
         > .wp-block-button {
             margin: 0 auto;
+            opacity: .8;
+            transform: opacity 1s;
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }
