@@ -19,7 +19,19 @@ class ThemeCustomizer implements Customizer
         'instagram' => 'Instagram',
     );
 
+
+    // Uses Ionic Icons: https://ionic.io/ionicons
+    public $contact_types = [
+        'call'                => 'Phone',
+        'phone-portrait'      => 'Mobile',
+        'mail'                => 'Email',
+        'location'            => 'Location',
+        'chatbubble-ellipses' => 'SMS'
+    ];
+
     protected $slug;
+
+    protected $max_contact = 4;
 
     public function __construct($slug = 'theme')
     {
@@ -35,9 +47,19 @@ class ThemeCustomizer implements Customizer
     {
         $this->ch->setManager($manager);
         $this->initializeSocialMedia();
+        $this->initializeContactInfo();
         $this->initializeFooterPages();
         $this->initializeCopyrightInfo();
         $this->initializeGoogleAnalytics();
+    }
+
+    private function initializeContactInfo()
+    {
+        $this->ch->addSection($this->slug . '_contact_info', 'Contact Info', 135);
+        for ($i = 1; $i <= $this->max_contact; $i++) {
+            $this->ch->addControl("contact_{$i}", $this->slug . '_contact_info', "Contact Info {$i}");
+            $this->ch->addControl("contact_{$i}_type", $this->slug . '_contact_info', "Contact Type", "", "select", $this->contact_types);
+        }
     }
 
     /**
@@ -81,5 +103,16 @@ class ThemeCustomizer implements Customizer
         return array_map(function ($media) {
             return "social_{$media}";
         }, array_keys($this->social));
+    }
+
+    public function getContactInfo()
+    {
+        $contact_info = [];
+        for ($i = 1; $i <= $this->max_contact; $i++) {
+            if (get_option("contact_{$i}") == "") continue;
+            $contact_info[get_option("contact_{$i}_type")] = get_option("contact_{$i}");
+        }
+        
+        return $contact_info;
     }
 }

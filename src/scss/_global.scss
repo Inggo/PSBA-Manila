@@ -33,7 +33,7 @@ img {
 $a-color: $accent-bg;
 
 main {
-    a:not(.wp-block-button__link ):not(.a-img):not(.btn):not(.list-group-item):not(.carousel-control-prev):not(.carousel-control-next):not(.fc-event) {
+    a:not(.wp-block-button__link):not(.a-img):not(.btn):not(.list-group-item):not(.carousel-control-prev):not(.carousel-control-next):not(.fc-event) {
         color: $a-color;
         position: relative;
 
