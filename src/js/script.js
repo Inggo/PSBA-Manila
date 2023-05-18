@@ -135,7 +135,6 @@ window.onload = function() {
     var togglers = document.getElementsByClassName("sub-menu-toggle");
     for (let toggler of togglers) {
         toggler.addEventListener("click", function() {
-            console.log(this);
             let menuItem = this.parentElement;
             this.classList.toggle('active');
             menuItem.classList.toggle('active');
