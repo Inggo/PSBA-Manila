@@ -87,7 +87,7 @@ class Theme
         wp_register_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', [], '1.14.7');
         wp_register_script('bootstrap_js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', ['jquery', 'popper'], '4.3.1');
 
-        wp_register_script('main_js', get_template_directory_uri() . '/script.js', ['bootstrap_js', 'ionic_icons', 'ionic_icons_nomodule'], $this->version);
+        wp_register_script('main_js', get_template_directory_uri() . '/script.js', ['bootstrap_js'], $this->version);
 
         wp_register_style('bootstrap_css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', [], '4.3.1');
     }
