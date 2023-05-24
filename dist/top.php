@@ -3,14 +3,14 @@
   <section class="site-header--top">
     <div class="container">
       <div class="row">
-        <div class="d-flex flex col-md-12 align-items-center">
+        <div class="d-flex flex-column flex-md-row col-md-12 align-items-center">
           <?php foreach ($theme->customizer->getContactInfo() as $icon => $info): ?>
           <div class="contact-info p-2">
             <ion-icon name="<?= $icon; ?>-sharp"></ion-icon>
             <?= $info; ?>
           </div>
           <?php endforeach; ?>
-          <div class="p-2 ml-auto">
+          <div class="p-2 ml-md-auto">
             <ul class="social-media">
               <?php foreach ($theme->customizer->getSocialOptions() as $socialMedia) : ?>
                 <?php if (get_option($socialMedia) && get_option($socialMedia) !== '') : ?>
